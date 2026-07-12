@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Android redirect — fires before first paint, no page flash -->
+  <script>
+    if (window.location.hash === '#app' && /android/i.test(navigator.userAgent)) {
+      window.location.replace('https://play.google.com/store/apps/details?id=com.kyzenz.moneybosshome');
+    }
+  </script>
+
+  <title>MoneyBoss Home — Private Expense Tracker | Kyzenz</title>
+  <meta name="description" content="MoneyBoss Home is a private, offline expense tracker. No account, no ads, free forever. Available on Android." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="MoneyBoss Home — Private Expense Tracker" />
+  <meta property="og:description" content="Track expenses privately and offline. No account needed, no ads, completely free." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kyzenz.com/moneybosshome/moneybosshome.html" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" rel="stylesheet" />
+
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Variables (matches kyzenz.com) ── */
+    :root {
+      --bg:           #ffffff;
+      --surface:      #f8fafc;
+      --border:       #e2e8f0;
+      --text:         #0f172a;
+      --text-muted:   #64748b;
+      --text-body:    #374151;
+      --accent:       #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-light: #eff6ff;
+      --success:      #16a34a;
+      --font:         'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius:       12px;
+      --max-width:    760px;
+    }
+
+    /* ── Base ── */
+    html  { scroll-behavior: smooth; }
+    body  {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Nav ── */
+    nav {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-back::before { content: '←  '; }
+    .nav-back:hover   { color: var(--text); }
+    .nav-tabs {
+      display: flex;
+      gap: 4px;
+    }
+    .nav-tab {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      user-select: none;
+    }
+    .nav-tab:hover           { background: var(--surface); color: var(--text); }
+    .nav-tab.active          { background: var(--accent-light); color: var(--accent); }
+
+    /* ── Sections ── */
+    .section           { display: none; }
+    .section.visible   { display: block; }
+
+    /* ── Hero ── */
+    .hero { padding: 60px 0 52px; }
+    .hero-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+    }
+    .app-icon {
+      width: 80px;
+      height: 80px;
+      min-width: 80px;
+      background: var(--accent);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1px;
+    }
+    .hero-text h1 {
+      font-size: clamp(26px, 5vw, 38px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .hero-tagline {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      line-height: 1.55;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Google Play button */
+    .btn-play {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #000;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 10px;
+      transition: opacity 0.2s;
+    }
+    .btn-play:hover { opacity: 0.82; }
+    .btn-play-label small {
+      display: block;
+      font-size: 10px;
+      font-weight: 400;
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .btn-play-label strong { font-size: 15px; font-weight: 700; }
+    .free-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--success);
+    }
+
+    /* ── Divider ── */
+    hr.divider { border: none; border-top: 1px solid var(--border); }
+
+    /* ── Free Features ── */
+    .features { padding: 48px 0; }
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .feature-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .feature-row:first-of-type { border-top: 1px solid var(--border); }
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      background: var(--accent-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+    }
+    .feature-icon .material-symbols-outlined { font-size: 20px; }
+    .feature-name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .feature-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ── Premium ── */
+    .premium { padding: 0 0 72px; }
+    .premium-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+    }
+    .premium-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .premium-title { font-size: 16px; font-weight: 700; }
+    .premium-pill {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: #fef9c3;
+      color: #854d0e;
+    }
+    .premium-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 24px;
+    }
+    .premium-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .premium-item::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* ── Privacy Policy ── */
+    .privacy-wrap { padding: 56px 0 80px; }
+    .privacy-wrap h2 {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+    .privacy-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 44px;
+    }
+    .policy-block { margin-bottom: 36px; }
+    .policy-block h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .policy-block p,
+    .policy-block li {
+      font-size: 15px;
+      color: var(--text-body);
+      line-height: 1.8;
+    }
+    .policy-block ul {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+    .policy-block ul li { margin-bottom: 6px; }
+    .policy-block a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .policy-block a:hover { color: var(--accent-hover); }
+
+    /* ── Footer ── */
+    footer { border-top: 1px solid var(--border); padding: 28px 0; }
+    footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer-copy  { font-size: 13px; color: var(--text-muted); }
+    .footer-email {
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .footer-email:hover { color: var(--text); }
+
+    /* ── Responsive ── */
+    @media (max-width: 560px) {
+      .hero          { padding: 40px 0 36px; }
+      .hero-inner    { flex-direction: column; gap: 20px; }
+      .app-icon      { width: 64px; height: 64px; min-width: 64px; font-size: 20px; border-radius: 16px; }
+      .premium-card  { padding: 24px 20px; }
+      .premium-grid  { grid-template-columns: 1fr; }
+      footer .container { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav>
+    <div class="container">
+      <a class="nav-back" href="/">Kyzenz</a>
+      <div class="nav-tabs">
+        <span class="nav-tab" id="tab-overview" onclick="navigate('home')">Overview</span>
+        <span class="nav-tab" id="tab-privacy"  onclick="navigate('privacy')">Privacy</span>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ══════════════════════════════════════
+       SECTION: Overview (default / #app)
+  ══════════════════════════════════════ -->
+  <div class="section" id="section-home">
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="app-icon">MB</div>
+          <div class="hero-text">
+            <h1>MoneyBoss Home</h1>
+            <p class="hero-tagline">
+              Private, Secure, Free &amp; No Ads.<br>
+              Know where your money goes.
+            </p>
+            <div class="hero-actions">
+              <a class="btn-play"
+                 href="https://play.google.com/store/apps/details?id=com.kyzenz.moneybosshome"
+                 target="_blank" rel="noopener noreferrer">
+                <!-- Play arrow icon -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+                  <path d="M3 20.5v-17c0-.83 1.02-1.28 1.63-.71L19 12 4.63 21.21C4.02 21.77 3 21.32 3 20.5z"/>
+                </svg>
+                <div class="btn-play-label">
+                  <small>Get it on</small>
+                  <strong>Google Play</strong>
+                </div>
+              </a>
+              <span class="free-label">✓ Free forever</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="features">
+      <div class="container">
+        <p class="section-eyebrow">Free features</p>
+
+        <div class="feature-row">
+          <div class="feature-icon">
+            <span class="material-symbols-outlined">lock</span>
+          </div>
+          <div>
+            <div class="feature-name">Private</div>
+            <div class="feature-desc">Your data is never shared or tracked. It lives only on your device.</div>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div class="feature-icon">
+            <span class="material-symbols-outlined">verified_user</span>
+          </div>
+          <div>
+            <div class="feature-name">Secure</div>
+            <div class="feature-desc">PIN lock, biometrics, and AES-256 encryption protect your expenses.</div>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div class="feature-icon">
+            <span class="material-symbols-outlined">wifi_off</span>
+          </div>
+          <div>
+            <div class="feature-name">Offline</div>
+            <div class="feature-desc">Works fully without internet. No cloud sync, no data plan needed.</div>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div class="feature-icon">
+            <span class="material-symbols-outlined">person_off</span>
+          </div>
+          <div>
+            <div class="feature-name">No Account</div>
+            <div class="feature-desc">No sign-up, no email, no profile. Open the app and start tracking.</div>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div class="feature-icon">
+            <span class="material-symbols-outlined">money_off</span>
+          </div>
+          <div>
+            <div class="feature-name">Free Forever</div>
+            <div class="feature-desc">Core expense tracking is free with no ads — ever.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <section class="premium">
+      <div class="container" style="padding-top: 48px;">
+        <p class="section-eyebrow">Pro features</p>
+        <div class="premium-card">
+          <div class="premium-top">
+            <div class="premium-title">MoneyBoss Pro</div>
+            <span class="premium-pill">Optional upgrade</span>
+          </div>
+          <div class="premium-grid">
+            <div class="premium-item">Custom categories &amp; tags</div>
+            <div class="premium-item">Advanced reports &amp; PDF export</div>
+            <div class="premium-item">Google Drive cloud backup</div>
+            <div class="premium-item">Family expense sharing (QR)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /section-home -->
+
+
+  <!-- ══════════════════════════════════════
+       SECTION: Privacy Policy (#privacy)
+  ══════════════════════════════════════ -->
+  <div class="section" id="section-privacy">
+    <section class="privacy-wrap">
+      <div class="container">
+
+        <h2>Privacy Policy</h2>
+        <p class="privacy-meta">MoneyBoss Home by Kyzenz &mdash; Last updated: July 2026</p>
+
+        <div class="policy-block">
+          <h3>Overview</h3>
+          <p>MoneyBoss Home is designed to be private by default. We do not collect, store, or share any personal data. All your expense data stays on your device.</p>
+        </div>
+
+        <div class="policy-block">
+          <h3>Data We Collect</h3>
+          <p>We collect no personal data. MoneyBoss Home does not require an account, email address, or any personal information to function.</p>
+        </div>
+
+        <div class="policy-block">
+          <h3>Data Storage</h3>
+          <p>All expense data — categories, amounts, notes, and settings — is stored locally on your device in a private SQLite database. This data is:</p>
+          <ul>
+            <li>Never uploaded to Kyzenz servers</li>
+            <li>Never used for analytics or advertising</li>
+            <li>Only accessible to the MoneyBoss Home app on your device</li>
+          </ul>
+        </div>
+
+        <div class="policy-block">
+          <h3>Optional Google Drive Backup</h3>
+          <p>You may choose to back up your data to Google Drive. This is entirely optional and user-initiated. When enabled:</p>
+          <ul>
+            <li>Your data is encrypted on your device before upload using AES-256-GCM encryption</li>
+            <li>Backups are stored in your personal Google Drive app data folder, accessible only to MoneyBoss Home</li>
+            <li>Kyzenz cannot access your Google Drive or backup files</li>
+            <li>You can delete your backup at any time from Google Drive settings</li>
+          </ul>
+        </div>
+
+        <div class="policy-block">
+          <h3>In-App Purchases</h3>
+          <p>MoneyBoss Pro is an optional subscription available through Google Play. Purchase transactions are handled by Google Play and RevenueCat. We receive only confirmation that a valid subscription is active — no payment details or personal financial information is shared with Kyzenz.</p>
+        </div>
+
+        <div class="policy-block">
+          <h3>Camera Permission</h3>
+          <p>The app requests camera access only when you use the Family Sharing feature to scan QR codes. No photos or images are stored or transmitted. Denying camera permission does not affect any other feature.</p>
+        </div>
+
+        <div class="policy-block">
+          <h3>Biometric Authentication</h3>
+          <p>If you enable biometric login (fingerprint or face), authentication is performed entirely by your device's secure hardware. Biometric data never leaves your device and is never accessible to MoneyBoss Home or Kyzenz.</p>
+        </div>
+
+        <div class="policy-block">
+          <h3>Notifications</h3>
+          <p>Daily reminder notifications are scheduled locally on your device. No notification data is sent to Kyzenz servers. Notifications can be disabled at any time in the app settings.</p>
+        </div>
+
+        <div class="policy-block">
+          <h3>Analytics &amp; Crash Reporting</h3>
+          <p>MoneyBoss Home does not include any analytics SDKs, crash reporting services, or advertising networks.</p>
+        </div>
+
+        <div class="policy-block">
+          <h3>Children's Privacy</h3>
+          <p>MoneyBoss Home is not directed at children under 13. We do not knowingly collect information from children.</p>
+        </div>
+
+        <div class="policy-block">
+          <h3>Changes to This Policy</h3>
+          <p>If we update this policy, the revised version will be posted at this URL with an updated date. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+        </div>
+
+        <div class="policy-block">
+          <h3>Contact</h3>
+          <p>Questions or concerns? Contact us at <a href="mailto:hello@kyzenz.com">hello@kyzenz.com</a>.</p>
+        </div>
+
+      </div>
+    </section>
+  </div><!-- /section-privacy -->
+
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="container">
+      <span class="footer-copy">© 2026 Kyzenz. All rights reserved.</span>
+      <a class="footer-email" href="mailto:hello@kyzenz.com">hello@kyzenz.com</a>
+    </div>
+  </footer>
+
+
+  <script>
+    const PLAY_STORE = 'https://play.google.com/store/apps/details?id=com.kyzenz.moneybosshome';
+
+    // Show a named section, update nav, update URL hash
+    function navigate(name) {
+      document.querySelectorAll('.section').forEach(el => el.classList.remove('visible'));
+      document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+      window.scrollTo({ top: 0 });
+
+      if (name === 'privacy') {
+        document.getElementById('section-privacy').classList.add('visible');
+        document.getElementById('tab-privacy').classList.add('active');
+        history.pushState(null, '', '#privacy');
+      } else {
+        document.getElementById('section-home').classList.add('visible');
+        document.getElementById('tab-overview').classList.add('active');
+        history.pushState(null, '', location.pathname);
+      }
+    }
+
+    // Read hash on load / browser back-forward
+    function syncFromHash() {
+      const hash = window.location.hash;
+      if (hash === '#privacy') {
+        navigate('privacy');
+      } else if (hash === '#app') {
+        // Android was already redirected by the <head> script.
+        // iOS / Desktop: show the overview with the Play Store button.
+        navigate('home');
+      } else {
+        navigate('home');
+      }
+    }
+
+    syncFromHash();
+    window.addEventListener('popstate', syncFromHash);
+  </script>
+
+</body>
+</html>

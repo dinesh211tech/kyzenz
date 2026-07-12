@@ -1,42 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyzenz</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kyzenz — Simple, Private Apps</title>
+  <meta name="description" content="Kyzenz builds simple, private apps for everyday life. No accounts, no ads, your data stays yours." />
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <!-- Open Graph -->
+  <meta property="og:title" content="Kyzenz" />
+  <meta property="og:description" content="Simple, private apps for everyday life." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kyzenz.com/" />
 
-        body {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #ffffff;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
 
-        h1 {
-            font-size: 3rem;
-            font-weight: 600;
-            color: #222;
-            text-align: center;
-        }
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2rem;
-                padding: 0 20px;
-            }
-        }
-    </style>
+    /* ── Variables ── */
+    :root {
+      --bg:           #ffffff;
+      --surface:      #f8fafc;
+      --border:       #e2e8f0;
+      --text:         #0f172a;
+      --text-muted:   #64748b;
+      --accent:       #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-light: #eff6ff;
+      --font:         'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius:       12px;
+      --max-width:    960px;
+    }
+
+    /* ── Base ── */
+    html  { scroll-behavior: smooth; }
+    body  {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Layout ── */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Nav ── */
+    nav {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text);
+    }
+    .nav-contact {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .nav-contact:hover { color: var(--text); }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 88px 0 72px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 440px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── Products ── */
+    .products {
+      padding: 16px 0 96px;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .product-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      max-width: 560px;
+      transition: box-shadow 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+    .product-card:hover {
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+      border-color: #cbd5e1;
+    }
+    .product-icon {
+      width: 56px;
+      height: 56px;
+      min-width: 56px;
+      background: var(--accent);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1px;
+    }
+    .product-name {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .product-category {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .product-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+    .product-footer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+    .link-arrow {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-left: auto;
+    }
+    .link-arrow::after { content: ' →'; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+    }
+    footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .footer-email {
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .footer-email:hover { color: var(--text); }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .hero          { padding: 60px 0 48px; }
+      .hero p        { font-size: 16px; }
+      .product-card  { padding: 24px; flex-direction: column; gap: 16px; }
+      .product-icon  { width: 48px; height: 48px; min-width: 48px; font-size: 16px; border-radius: 12px; }
+      .link-arrow    { margin-left: 0; }
+      footer .container { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to Kyzenz</h1>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <span class="nav-logo">Kyzenz</span>
+      <a class="nav-contact" href="mailto:hello@kyzenz.com">hello@kyzenz.com</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-eyebrow">Welcome to Kyzenz</span>
+      <h1>Simple apps for<br>everyday life</h1>
+      <p>We build private, offline-first apps that put you in control of your data.</p>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="products">
+    <div class="container">
+      <p class="section-label">Our Apps</p>
+      <a href="/moneybosshome/moneybosshome.html" class="product-card">
+        <div class="product-icon">MB</div>
+        <div>
+          <div class="product-name">MoneyBoss Home</div>
+          <div class="product-category">Expense Tracker</div>
+          <div class="product-desc">
+            Track expenses privately and offline. No account needed,
+            no ads, completely free — your data never leaves your device.
+          </div>
+          <div class="product-footer">
+            <span class="badge">Android</span>
+            <span class="link-arrow">Learn more</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <span class="footer-copy">© 2026 Kyzenz. All rights reserved.</span>
+      <a class="footer-email" href="mailto:hello@kyzenz.com">hello@kyzenz.com</a>
+    </div>
+  </footer>
+
 </body>
 </html>
