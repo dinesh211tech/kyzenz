@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Help &amp; FAQ — MoneyBoss Home | Kyzenz</title>
+  <meta name="description" content="Help and frequently asked questions for MoneyBoss Home." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:       #0a0a0a;
+      --surface:    #111111;
+      --border:     rgba(255,255,255,0.08);
+      --text:       #ffffff;
+      --text-muted: #94a3b8;
+      --text-subtle:#475569;
+      --accent:     #0d9488;
+      --teal:       #2dd4bf;
+      --font:       'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius:     14px;
+      --max-width:  1100px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--dark);
+      background-image: radial-gradient(ellipse at 50% 0%, rgba(13,148,136,0.22) 0%, transparent 55%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Nav ── */
+    nav {
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s, border-color 0.3s;
+      z-index: 100;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.95);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-back {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-subtle);
+      transition: color 0.2s;
+    }
+    .nav-back::before { content: '← '; }
+    .nav-back:hover   { color: var(--text); }
+    .nav-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* ── Page header ── */
+    .page-header {
+      padding: 72px 0 48px;
+    }
+    .page-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .page-header h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .page-header p {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
+
+    /* ── FAQ ── */
+    .faq-wrap { padding: 0 0 80px; }
+
+    .faq-section { margin-bottom: 40px; }
+    .faq-section-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    details {
+      border-bottom: 1px solid var(--border);
+    }
+    details:last-child { border-bottom: none; }
+
+    summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 0;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '+';
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--text-subtle);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+    details[open] summary { color: var(--teal); }
+
+    .faq-answer {
+      padding: 0 0 20px;
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .faq-answer p + p { margin-top: 10px; }
+    .faq-answer ul {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+    .faq-answer ul li { margin-bottom: 6px; }
+    .faq-answer a {
+      color: var(--teal);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── Contact strip ── */
+    .contact-strip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 80px;
+    }
+    .contact-strip-text h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .contact-strip-text p  { font-size: 14px; color: var(--text-muted); }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--teal);
+      background: rgba(13,148,136,0.12);
+      border: 1px solid rgba(45,212,191,0.2);
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .contact-btn:hover { opacity: 0.8; }
+    .contact-btn .material-symbols-outlined { font-size: 18px; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+    }
+    footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-copy { font-size: 13px; color: var(--text-subtle); }
+    .footer-link { font-size: 13px; color: var(--text-subtle); transition: color 0.2s; }
+    .footer-link:hover { color: var(--text); }
+    .footer-sep { font-size: 13px; color: var(--border); }
+
+    @media (max-width: 560px) {
+      .page-header    { padding: 52px 0 36px; }
+      .contact-strip  { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ── -->
+  <nav id="main-nav">
+    <div class="container">
+      <a class="nav-back" href="mbh.html">MoneyBoss Home</a>
+      <span class="nav-title">Help &amp; FAQ</span>
+    </div>
+  </nav>
+
+  <!-- ── Page header ── -->
+  <div class="page-header">
+    <div class="container">
+      <p class="page-eyebrow">Help &amp; FAQ</p>
+      <h1>How can we help?</h1>
+      <p>Answers to the most common questions about MoneyBoss Home.</p>
+    </div>
+  </div>
+
+  <!-- ── FAQ ── -->
+  <div class="faq-wrap">
+    <div class="container">
+
+      <!-- Getting Started -->
+      <div class="faq-section">
+        <div class="faq-section-title">Getting Started</div>
+
+        <details>
+          <summary>Do I need to create an account?</summary>
+          <div class="faq-answer">
+            <p>No. MoneyBoss Home requires no account, no email, and no sign-up. Open the app and start tracking immediately. Your data lives only on your device.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Can I use the app without an internet connection?</summary>
+          <div class="faq-answer">
+            <p>Yes — the app works fully offline. All data is stored locally on your device. An internet connection is only needed if you choose to use the optional Google Drive backup feature.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How do I set up the app for the first time?</summary>
+          <div class="faq-answer">
+            <p>When you first open the app, a quick setup screen asks for your name, preferred currency, and language. You'll then create a PIN to protect your data. That's it — you're ready to start tracking.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Which languages are supported?</summary>
+          <div class="faq-answer">
+            <p>MoneyBoss Home is available in English, Spanish, Portuguese, French, and Hindi. You can change the language at any time from Profile → Language.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- Adding & Managing Expenses -->
+      <div class="faq-section">
+        <div class="faq-section-title">Adding &amp; Managing Expenses</div>
+
+        <details>
+          <summary>How do I add an expense?</summary>
+          <div class="faq-answer">
+            <p>Tap the + button on the home screen. Enter the item name, amount, and select a category. You can also set the date, account, priority, and a note. Tap Save to add it instantly.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Can I edit or delete an expense?</summary>
+          <div class="faq-answer">
+            <p>Yes. Tap any expense in the Recent list to open it in edit mode. Make your changes and tap Save. To delete, tap the Delete button — you'll have 10 seconds to undo.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What is the Archive?</summary>
+          <div class="faq-answer">
+            <p>Archiving moves an expense out of your active list without permanently deleting it. Archived expenses don't count towards your dashboard totals. You can restore or permanently delete them from Profile → Archive.</p>
+          </div>
+        </details>
+
+
+        <details>
+          <summary>How do I delete all expenses for a period?</summary>
+          <div class="faq-answer">
+            <p>Go to Profile → Delete Expenses. You can choose to delete expenses for the current month, a custom date range, or all time. A PIN confirmation is required before any data is deleted.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- Dashboard -->
+      <div class="faq-section">
+        <div class="faq-section-title">Dashboard</div>
+
+        <details>
+          <summary>What does the dashboard show?</summary>
+          <div class="faq-answer">
+            <p>The dashboard shows your total spending for the selected month, budget progress, a category breakdown with pie chart, your top spending categories, insights by account and priority, and a 12-month history chart.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How do I set a monthly budget?</summary>
+          <div class="faq-answer">
+            <p>Tap the "Set Budget" button on the dashboard. Enter your budget amount and save. The progress bar will show how much of your budget you've used. The budget resets each month.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Can I view previous months?</summary>
+          <div class="faq-answer">
+            <p>Yes. Use the month selector at the top of the dashboard to navigate to any previous month. The history chart always shows the last 12 months for quick comparison.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- Backup & Restore -->
+      <div class="faq-section">
+        <div class="faq-section-title">Backup &amp; Restore</div>
+
+        <details>
+          <summary>How do I back up my data?</summary>
+          <div class="faq-answer">
+            <p>Go to Profile → Local Backup → Backup. This saves an encrypted backup file to your device's private storage — the file is not visible in your file manager. To restore on the same device, tap Restore. Note: local backup cannot be used to transfer data to a new device.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What is Google Drive backup?</summary>
+          <div class="faq-answer">
+            <p>Google Drive backup is an optional Pro feature that automatically backs up your data to your personal Google Drive. Your data is encrypted on your device before upload. Kyzenz cannot access your Drive or backup files.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What happens if I uninstall the app?</summary>
+          <div class="faq-answer">
+            <p>All local data is deleted when the app is uninstalled, including any local backup files. If you have a Google Drive backup, you can restore your data after reinstalling. Always back up to Google Drive before uninstalling.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Can I transfer data to a new phone?</summary>
+          <div class="faq-answer">
+            <p>Yes, using Google Drive backup. On your old phone, go to Profile → Google Backup → Back Up Now. On your new phone, install MoneyBoss Home, complete setup, then go to Profile → Google Backup → Restore. Your data will be restored instantly. Local backup cannot be used to transfer data to a new device.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- Security & PIN -->
+      <div class="faq-section">
+        <div class="faq-section-title">Security &amp; PIN</div>
+
+        <details>
+          <summary>How do I change my PIN?</summary>
+          <div class="faq-answer">
+            <p>Go to Profile → Change PIN. You'll be asked to enter your current PIN first, then set a new one. Your local backup is automatically re-encrypted with the new PIN.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What happens if I forget my PIN?</summary>
+          <div class="faq-answer">
+            <p>There is no PIN recovery. This is by design — your data is encrypted with your PIN, and Kyzenz has no access to it. If you forget your PIN and have no backup, you will need to delete the app and start fresh. Always keep a backup.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How does biometric login work?</summary>
+          <div class="faq-answer">
+            <p>After enabling biometrics in Profile → Security, you can log in with your fingerprint or face instead of your PIN. Biometric authentication is handled entirely by your device's secure hardware — no biometric data ever leaves your device.</p>
+            <p>Note: your PIN will still be required periodically to verify you haven't forgotten it.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- MoneyBoss Pro -->
+      <div class="faq-section">
+        <div class="faq-section-title">MoneyBoss Pro</div>
+
+        <details>
+          <summary>What is MoneyBoss Pro?</summary>
+          <div class="faq-answer">
+            <p>MoneyBoss Pro is an optional annual subscription that unlocks premium features. The core expense tracking features are free forever — Pro is for users who want more power.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What's included in Pro?</summary>
+          <div class="faq-answer">
+            <ul>
+              <li>Custom categories and tags</li>
+              <li>Advanced reports with date range filters and PDF export</li>
+              <li>Google Drive cloud backup</li>
+              <li>Family expense sharing via QR code</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>How do I restore my Pro purchase after reinstalling?</summary>
+          <div class="faq-answer">
+            <p>Go to Profile → Membership → Restore Pro. The app will check your purchase history and re-activate your subscription. Make sure you're signed in to the same Google Play or App Store account used for the original purchase.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What happens to my data if Pro expires?</summary>
+          <div class="faq-answer">
+            <p>Your data is never deleted when Pro expires. All your custom categories, tags, and imported family expenses are preserved. You just won't be able to edit them until you resubscribe. Core expense tracking remains available.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- Privacy & Data -->
+      <div class="faq-section">
+        <div class="faq-section-title">Privacy &amp; Data</div>
+
+        <details>
+          <summary>Where is my data stored?</summary>
+          <div class="faq-answer">
+            <p>All your data is stored locally in a private encrypted database on your device. Nothing is sent to Kyzenz servers. The only exception is the optional Google Drive backup, which is stored in your personal Drive app data folder — inaccessible to Kyzenz.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Does Kyzenz collect any data?</summary>
+          <div class="faq-answer">
+            <p>No. MoneyBoss Home does not include any analytics SDKs, crash reporting services, or advertising networks. We collect no personal data, no usage data, and no telemetry of any kind.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How do I delete all my data?</summary>
+          <div class="faq-answer">
+            <p>Go to Profile → Delete Account. After PIN confirmation, all your data — expenses, categories, settings, and the encrypted database — is permanently wiped. The app returns to the initial setup screen. This cannot be undone.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- Contact strip -->
+      <div class="contact-strip">
+        <div class="contact-strip-text">
+          <h3>Still have a question?</h3>
+          <p>We're happy to help. Send us a message and we'll get back to you.</p>
+        </div>
+        <a class="contact-btn" href="mailto:hello@kyzenz.com">
+          <span class="material-symbols-outlined">mail</span>
+          hello@kyzenz.com
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="container">
+      <span class="footer-copy">© 2026 Kyzenz. All rights reserved.</span>
+      <span class="footer-sep">·</span>
+      <a class="footer-link" href="privacy.html">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    });
+  </script>
+
+</body>
+</html>

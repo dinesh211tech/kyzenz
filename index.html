@@ -23,31 +23,27 @@
 
     /* ── Variables ── */
     :root {
-      --bg:           #ffffff;
-      --surface:      #f8fafc;
-      --border:       #e2e8f0;
-      --text:         #0f172a;
-      --text-muted:   #64748b;
-      --accent:       #2563eb;
-      --accent-hover: #1d4ed8;
-      --accent-light: #eff6ff;
-      --font:         'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --radius:       12px;
-      --max-width:    960px;
+      --dark:       #0a0a0a;
+      --accent:     #0d9488;
+      --font:       'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-width:  1100px;
     }
 
     /* ── Base ── */
-    html  { scroll-behavior: smooth; }
-    body  {
+    html { scroll-behavior: smooth; }
+    body {
       font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
+      background: var(--dark);
+      color: #ffffff;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: radial-gradient(ellipse at 50% 0%, rgba(13,148,136,0.22) 0%, transparent 60%);
     }
     a { color: inherit; text-decoration: none; }
 
-    /* ── Layout ── */
     .container {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -57,7 +53,17 @@
     /* ── Nav ── */
     nav {
       padding: 20px 0;
-      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s, border-color 0.3s;
+      z-index: 100;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
     nav .container {
       display: flex;
@@ -68,159 +74,86 @@
       font-size: 20px;
       font-weight: 800;
       letter-spacing: -0.5px;
-      color: var(--text);
+      color: #ffffff;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
     }
     .nav-contact {
       font-size: 14px;
       font-weight: 500;
-      color: var(--text-muted);
+      color: #64748b;
       transition: color 0.2s;
     }
-    .nav-contact:hover { color: var(--text); }
+    .nav-contact:hover { color: #ffffff; }
 
     /* ── Hero ── */
     .hero {
-      padding: 88px 0 72px;
-      text-align: center;
-    }
-    .hero-eyebrow {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 20px;
-    }
-    .hero h1 {
-      font-size: clamp(36px, 6vw, 56px);
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
-      color: var(--text);
-      margin-bottom: 20px;
-    }
-    .hero p {
-      font-size: 18px;
-      color: var(--text-muted);
-      max-width: 440px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-
-    /* ── Products ── */
-    .products {
-      padding: 16px 0 96px;
-    }
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-    }
-    .product-card {
-      display: flex;
-      align-items: flex-start;
-      gap: 24px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px;
-      max-width: 560px;
-      transition: box-shadow 0.2s, border-color 0.2s;
-      cursor: pointer;
-    }
-    .product-card:hover {
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
-      border-color: #cbd5e1;
-    }
-    .product-icon {
-      width: 56px;
-      height: 56px;
-      min-width: 56px;
-      background: var(--accent);
-      border-radius: 14px;
+      flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -1px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    .product-name {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 2px;
-    }
-    .product-category {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-    .product-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.65;
-      margin-bottom: 18px;
-    }
-    .product-footer {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      font-size: 12px;
-      font-weight: 500;
-      padding: 4px 10px;
-      border-radius: 100px;
-      background: var(--accent-light);
-      color: var(--accent);
-    }
-    .link-arrow {
-      font-size: 14px;
+    .hero .container { position: relative; }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 11px;
       font-weight: 600;
-      color: var(--accent);
-      margin-left: auto;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #2dd4bf;
+      background: rgba(13,148,136,0.12);
+      border: 1px solid rgba(45,212,191,0.25);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 32px;
     }
-    .link-arrow::after { content: ' →'; }
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 64px);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.05;
+      color: #ffffff;
+      margin-bottom: 24px;
+    }
+    .hero p {
+      font-size: 18px;
+      color: #94a3b8;
+      max-width: 440px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+    .hero .hero-kaizen {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      color: #334155;
+      margin-top: 64px;
+    }
 
     /* ── Footer ── */
     footer {
-      border-top: 1px solid var(--border);
       padding: 32px 0;
     }
     footer .container {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
+      justify-content: center;
     }
     .footer-copy {
       font-size: 13px;
-      color: var(--text-muted);
+      color: #334155;
     }
-    .footer-email {
-      font-size: 13px;
-      color: var(--text-muted);
-      transition: color 0.2s;
-    }
-    .footer-email:hover { color: var(--text); }
 
     /* ── Responsive ── */
     @media (max-width: 600px) {
-      .hero          { padding: 60px 0 48px; }
-      .hero p        { font-size: 16px; }
-      .product-card  { padding: 24px; flex-direction: column; gap: 16px; }
-      .product-icon  { width: 48px; height: 48px; min-width: 48px; font-size: 16px; border-radius: 12px; }
-      .link-arrow    { margin-left: 0; }
-      footer .container { flex-direction: column; align-items: flex-start; }
+      .hero   { padding: 80px 0 72px; }
+      .hero p { font-size: 16px; }
     }
   </style>
 </head>
@@ -230,7 +163,10 @@
   <nav>
     <div class="container">
       <span class="nav-logo">Kyzenz</span>
-      <a class="nav-contact" href="mailto:hello@kyzenz.com">hello@kyzenz.com</a>
+      <div class="nav-links">
+        <a class="nav-contact" href="/moneybosshome/mbh.html">MoneyBoss Home</a>
+        <a class="nav-contact" href="mailto:hello@kyzenz.com">hello@kyzenz.com</a>
+      </div>
     </div>
   </nav>
 
@@ -240,28 +176,7 @@
       <span class="hero-eyebrow">Welcome to Kyzenz</span>
       <h1>Simple apps for<br>everyday life</h1>
       <p>We build private, offline-first apps that put you in control of your data.</p>
-    </div>
-  </section>
-
-  <!-- Products -->
-  <section class="products">
-    <div class="container">
-      <p class="section-label">Our Apps</p>
-      <a href="/moneybosshome/mbh.html" class="product-card">
-        <div class="product-icon">MB</div>
-        <div>
-          <div class="product-name">MoneyBoss Home</div>
-          <div class="product-category">Expense Tracker</div>
-          <div class="product-desc">
-            Track expenses privately and offline. No account needed,
-            no ads, completely free — your data never leaves your device.
-          </div>
-          <div class="product-footer">
-            <span class="badge">Android</span>
-            <span class="link-arrow">Learn more</span>
-          </div>
-        </div>
-      </a>
+      <p class="hero-kaizen">Kyzenz (Kaizen) &mdash; &ldquo;change for the better&rdquo; or &ldquo;continuous improvement&rdquo;</p>
     </div>
   </section>
 
@@ -269,9 +184,15 @@
   <footer>
     <div class="container">
       <span class="footer-copy">© 2026 Kyzenz. All rights reserved.</span>
-      <a class="footer-email" href="mailto:hello@kyzenz.com">hello@kyzenz.com</a>
     </div>
   </footer>
+
+  <script>
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    });
+  </script>
 
 </body>
 </html>
