@@ -374,7 +374,7 @@
     /* Mobile-only screenshot */
     .feature-item-img {
       display: none;
-      margin-top: 16px;
+      margin: 16px auto 0;
       border-radius: 16px;
       overflow: hidden;
       background: var(--surface2);
@@ -601,11 +601,11 @@
             <a class="btn-store"
                href="https://play.google.com/store/apps/details?id=com.kyzenz.moneybosshome"
                target="_blank" rel="noopener noreferrer">
-              <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+              <img src="google-play-badge.png"
                    alt="Get it on Google Play" height="54" />
             </a>
             <a class="btn-store coming-soon">
-              <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+              <img src="app-store-badge.svg"
                    alt="Download on the App Store" height="38" />
             </a>
           </div>
@@ -829,8 +829,15 @@
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
+        // Immediately highlight the clicked tab
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        // Scroll with explicit nav offset so section doesn't hide behind sticky nav
         const el = document.getElementById(tab.dataset.section);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY - 60;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
       });
     });
 
