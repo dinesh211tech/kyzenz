@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script>
+    if (window.location.hash === '#app' && /android/i.test(navigator.userAgent)) {
+      window.location.replace('https://play.google.com/store/apps/details?id=com.kyzenz.moneybosshome');
+    }
+  </script>
+
+  <title>MoneyBoss Home — Private Expense Tracker | Kyzenz</title>
+  <meta name="description" content="MoneyBoss Home is a private, offline expense tracker. No account, no ads, free forever. Available on Android and iOS." />
+
+  <meta property="og:title" content="MoneyBoss Home — Private Expense Tracker" />
+  <meta property="og:description" content="Track expenses privately and offline. No account needed, no ads, completely free." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kyzenz.com/moneybosshome/mbh.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:        #0a0a0a;
+      --surface:     #111111;
+      --surface2:    #181818;
+      --border:      rgba(255,255,255,0.08);
+      --text:        #ffffff;
+      --text-muted:  #94a3b8;
+      --text-subtle: #475569;
+      --accent:      #0d9488;
+      --teal:        #2dd4bf;
+      --success:     #4ade80;
+      --font:        'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius:      14px;
+      --max-width:   1100px;
+      --nav-height:  52px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--dark);
+      background-image: radial-gradient(ellipse at 50% 0%, rgba(13,148,136,0.22) 0%, transparent 55%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Scroll offset for sticky nav (fix 6) ── */
+    section[id] {
+      scroll-margin-top: calc(var(--nav-height) + 16px);
+    }
+
+    /* ── Nav ── */
+    nav {
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s, border-color 0.3s;
+      z-index: 100;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.95);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: 100%;
+    }
+    .nav-back {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-subtle);
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-back::before { content: '← '; }
+    .nav-back:hover   { color: var(--text); }
+    .nav-tabs { display: flex; gap: 2px; }
+    .nav-tab {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-subtle);
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      user-select: none;
+      white-space: nowrap;
+      background: none;
+      border: none;
+    }
+    .nav-tab:hover  { background: rgba(255,255,255,0.06); color: var(--text); }
+    .nav-tab.active { background: rgba(13,148,136,0.15); color: var(--teal); }
+
+    /* ── Overview / Hero ── */
+    #overview {
+      padding: 72px 0 80px;
+    }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-left { display: flex; flex-direction: column; gap: 0; }
+
+    /* App name row */
+    .hero-app-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .app-icon {
+      width: 56px; height: 56px; min-width: 56px;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    }
+    .hero-app-name { font-size: 17px; font-weight: 700; line-height: 1.2; }
+    .hero-app-by   { font-size: 13px; color: var(--text-subtle); margin-top: 1px; }
+
+    /* Headline */
+    .hero-h1 {
+      font-size: clamp(32px, 4.5vw, 52px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.06;
+      margin-bottom: 18px;
+    }
+    .hero-tagline {
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    /* Feature pills */
+    .hero-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+    .hero-pill .pill-icon { font-size: 14px; }
+
+    /* Store badges */
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-store { display: inline-flex; align-items: center; transition: opacity 0.2s; }
+    .btn-store:hover { opacity: 0.8; }
+    .btn-store img { display: block; border-radius: 8px; }
+    .btn-store.coming-soon { position: relative; cursor: pointer; }
+    .btn-store.coming-soon::after {
+      content: 'Coming soon';
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1e293b;
+      color: #94a3b8;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s;
+    }
+    .btn-store.coming-soon:hover::after,
+    .btn-store.coming-soon.show-tip::after { opacity: 1; }
+
+    /* Right mockup */
+    .hero-mockup {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Teal glow the phone emerges from */
+    .hero-mockup::before {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 340px;
+      height: 100px;
+      background: radial-gradient(ellipse at center bottom, rgba(13,148,136,0.6) 0%, transparent 70%);
+      filter: blur(24px);
+      pointer-events: none;
+    }
+
+    /* Fade the phone's bottom edge into the glow */
+    .hero-mockup::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 290px;
+      height: 100px;
+      background: linear-gradient(to bottom, transparent 0%, #0a0a0a 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Phone frame */
+    .phone-frame {
+      width: 280px;
+      background: #000;
+      border: 5px solid #3a3a3c;
+      border-bottom: none;
+      border-radius: 40px 40px 0 0;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.08),
+        0 40px 100px rgba(0,0,0,0.8),
+        0 0 60px rgba(13,148,136,0.12);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+    }
+    .phone-status-bar {
+      height: 30px;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .phone-pill {
+      width: 10px; height: 10px;
+      background: #1c1c1e;
+      border-radius: 50%;
+      border: 1px solid #3a3a3c;
+    }
+    .phone-screen {
+      height: 380px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .phone-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    /* ── Section shared ── */
+    .section-header { padding: 64px 0 32px; }
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+    .section-subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-top: 10px;
+      max-width: 480px;
+    }
+
+    /* ── Features ── */
+    #features { padding-bottom: 0; }
+
+    .features-sticky-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .features-list {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 50vh;
+    }
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 36px 0;
+      border-top: 1px solid var(--border);
+      opacity: 0.3;
+      transition: opacity 0.4s;
+    }
+    .feature-item:first-child { border-top: none; padding-top: 0; }
+    .feature-item.active { opacity: 1; }
+    .feature-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+      width: fit-content;
+    }
+    .feature-badge.free {
+      background: rgba(74,222,128,0.12);
+      color: var(--success);
+      border: 1px solid rgba(74,222,128,0.2);
+    }
+    .feature-badge.pro {
+      background: rgba(13,148,136,0.12);
+      color: var(--teal);
+      border: 1px solid rgba(45,212,191,0.2);
+    }
+    .feature-item h3 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+    .feature-item p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    /* Mobile-only screenshot */
+    .feature-item-img {
+      display: none;
+      margin: 16px auto 0;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--surface2);
+      max-width: 220px;
+    }
+    .feature-item-img img { width: 100%; height: auto; display: block; }
+
+    /* Right sticky panel */
+    .features-image-pane {
+      position: sticky;
+      top: calc(var(--nav-height) + 40px);
+      display: flex;
+      justify-content: center;
+      padding-bottom: 80px;
+    }
+    .features-mockup {
+      width: 260px;
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+    .features-mockup img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity 0.2s;
+    }
+
+    /* ── Comparison table ── */
+    .compare-wrap {
+      margin-top: 144px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      background: var(--surface);
+      border: 1px solid rgba(45,212,191,0.2);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .compare-header {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--border);
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .compare-header h3 { font-size: 17px; font-weight: 700; }
+    .compare-pill {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 100px;
+      background: rgba(13,148,136,0.15);
+      color: var(--teal);
+      border: 1px solid rgba(45,212,191,0.25);
+    }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .compare-table thead tr th {
+      padding: 12px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+      border-bottom: 1px solid var(--border);
+    }
+    .compare-table thead tr th:first-child { padding-left: 28px; text-align: left; }
+    .compare-table thead tr th:not(:first-child) { text-align: center; width: 90px; }
+    .compare-table tbody tr td {
+      padding: 13px 16px;
+      font-size: 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .compare-table tbody tr:last-child td { border-bottom: none; }
+    .compare-table tbody tr td:first-child { padding-left: 28px; color: var(--text); }
+    .compare-table tbody tr td:not(:first-child) { text-align: center; }
+    .compare-table tbody tr.section-row td {
+      padding-top: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+      border-bottom: none;
+    }
+    .cell-check     { color: var(--teal); font-size: 17px; }
+    .cell-dash      { color: var(--text-subtle); }
+    .cell-text      { font-size: 13px; color: var(--text-subtle); }
+    .cell-text-pro  { color: var(--teal); font-weight: 500; }
+
+    /* ── About ── */
+    #about { padding: 0 0 80px; }
+    .about-body {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+    }
+    .about-body p {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .about-body p:last-of-type { margin-bottom: 0; }
+    .about-signature {
+      font-size: 13px;
+      color: var(--text-subtle);
+      margin-top: 20px;
+      font-style: italic;
+    }
+    .about-contact {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--teal);
+      transition: opacity 0.2s;
+    }
+    .contact-link:hover { opacity: 0.75; }
+    .contact-link .material-symbols-outlined { font-size: 18px; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+    }
+    footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-copy { font-size: 13px; color: var(--text-subtle); }
+    .footer-link { font-size: 13px; color: var(--text-subtle); transition: color 0.2s; }
+    .footer-link:hover { color: var(--text); }
+    .footer-sep { font-size: 13px; color: var(--text-subtle); }
+
+    /* ── Responsive ── */
+    @media (max-width: 860px) {
+      .hero-layout      { grid-template-columns: 1fr; gap: 40px; }
+      .hero-mockup      { justify-content: center; }
+      .phone-frame      { width: 240px; }
+      .phone-screen     { height: 360px; }
+    }
+    @media (max-width: 860px) {
+      .features-sticky-layout  { grid-template-columns: 1fr; gap: 0; }
+      .features-image-pane     { display: none; }
+      .feature-item            { opacity: 1; }
+      .feature-item-img        { display: block; }
+      .features-list           { padding-bottom: 0; }
+      .compare-wrap            { margin-top: 96px; }
+      #about                   { padding-bottom: 20vh; }
+    }
+    @media (max-width: 600px) {
+      #overview       { padding: 48px 0 48px; }
+      .hero-h1        { font-size: 34px; }
+      .app-icon       { width: 48px; height: 48px; min-width: 48px; }
+      .about-body     { padding: 24px; }
+      .section-header { padding: 48px 0 24px; }
+      .compare-table thead tr th:first-child,
+      .compare-table tbody tr td:first-child { padding-left: 20px; }
+      .compare-header { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ── -->
+  <nav id="main-nav">
+    <div class="container">
+      <a class="nav-back" href="/">Kyzenz</a>
+      <div class="nav-tabs">
+        <button class="nav-tab" data-section="overview">Overview</button>
+        <button class="nav-tab" data-section="features">Features</button>
+        <button class="nav-tab" data-section="about">About</button>
+        <a      class="nav-tab" href="help.html">FAQ</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Overview ── -->
+  <section id="overview">
+    <div class="container">
+      <div class="hero-layout">
+
+        <!-- Left: text -->
+        <div class="hero-left">
+          <div class="hero-app-row">
+            <img class="app-icon" src="icon.png" alt="MoneyBoss Home icon" />
+            <div>
+              <div class="hero-app-name">MoneyBoss Home</div>
+              <div class="hero-app-by">by Kyzenz</div>
+            </div>
+          </div>
+
+          <h1 class="hero-h1">Your Budget,<br>Your Rules.</h1>
+          <p class="hero-tagline">Track expenses. Control spending.<br>No strings attached.</p>
+
+          <div class="hero-pills">
+            <span class="hero-pill"><span class="pill-icon">🔒</span> Private</span>
+            <span class="hero-pill"><span class="pill-icon">🛡</span> Secure</span>
+            <span class="hero-pill"><span class="pill-icon">✓</span> Free</span>
+            <span class="hero-pill"><span class="pill-icon">📵</span> No Ads</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn-store"
+               href="https://play.google.com/store/apps/details?id=com.kyzenz.moneybosshome"
+               target="_blank" rel="noopener noreferrer">
+              <img src="google-play-badge.png"
+                   alt="Get it on Google Play" height="54" />
+            </a>
+            <a class="btn-store coming-soon">
+              <img src="app-store-badge.svg"
+                   alt="Download on the App Store" height="38" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: phone mockup -->
+        <div class="hero-mockup">
+          <div class="phone-frame">
+            <div class="phone-status-bar"><div class="phone-pill"></div></div>
+            <div class="phone-screen">
+              <img src="screens/dashboard.png" alt="MoneyBoss Home dashboard" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Features ── -->
+  <section id="features">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Features</p>
+        <h2 class="section-title">Everything you need,<br>nothing you don't</h2>
+        <p class="section-subtitle">Built to be private, offline, and fast — no account, no ads, no clutter.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="features-sticky-layout">
+
+        <!-- Left: scrollable feature list -->
+        <div class="features-list">
+
+          <div class="feature-item active" data-image="screens/onboarding.png">
+            <span class="feature-badge free">Free</span>
+            <h3>Why MoneyBoss Home?</h3>
+            <p>Fed up with apps that trade your data for their profits? MoneyBoss Home is different. No account, no ads, no data shared — ever. Install it, track your spending, close it. Just you, your phone, and a clear picture of your spending. Core features always free. Pro features optional.</p>
+            <div class="feature-item-img"><img src="screens/onboarding.png" alt="MoneyBoss Home" /></div>
+          </div>
+
+          <div class="feature-item" data-image="screens/login.png">
+            <span class="feature-badge free">Free</span>
+            <h3>Your Data, Locked Safe</h3>
+            <p>Your spending is nobody's business. Set a PIN and enable biometric login — fingerprint or face. After repeated wrong attempts the app locks automatically. Your expenses stay private and secure even if your phone is shared or lost.</p>
+            <div class="feature-item-img"><img src="screens/login.png" alt="Login screen" /></div>
+          </div>
+
+          <div class="feature-item" data-image="screens/dashboard.png">
+            <span class="feature-badge free">Free</span>
+            <h3>Dashboard</h3>
+            <p>Open the app and instantly know where you stand — monthly total, budget progress, top spends, and 12 months of history. Set a budget and watch it track in real time. Tap a pie slice to drill into any category. Swipe for deeper insights. Your money, finally making sense — all signal, no noise.</p>
+            <div class="feature-item-img"><img src="screens/dashboard.png" alt="Dashboard" /></div>
+          </div>
+
+          <div class="feature-item" data-image="screens/add.png">
+            <span class="feature-badge free">Free</span>
+            <h3>Add Expense</h3>
+            <p>No friction, no faff. Pick a category, type the amount, done — in under ten seconds. Built-in calculator, smart item suggestions, account tagging, collapsible categories, favourites and your recent expenses — all in one screen. Tracking money has never felt this effortless.</p>
+            <div class="feature-item-img"><img src="screens/add.png" alt="Add expense" /></div>
+          </div>
+
+          <div class="feature-item" data-image="screens/recent.png">
+            <span class="feature-badge free">Free</span>
+            <h3>Search &amp; Filter</h3>
+            <p>Every expense you've logged is one scroll away — your recent list. Search by item, filter by category, account, or priority — and tap any row to edit instantly. Need to fix a batch? Long-press to multi-select and bulk-reassign in one tap. Full control, zero friction.</p>
+            <div class="feature-item-img"><img src="screens/recent.png" alt="Search and filter" /></div>
+          </div>
+
+          <div class="feature-item" data-image="screens/family.png">
+            <span class="feature-badge pro">Pro</span>
+            <h3>Family Sharing</h3>
+            <p>See what the whole family spent — not just your half. Each member generates a QR, you scan it, and in seconds you have a combined family report. No internet. No server. No shared account. No company in the middle. Just a scan and a completely private family picture. Fully offline, by design.</p>
+            <div class="feature-item-img"><img src="screens/family.png" alt="Family sharing" /></div>
+          </div>
+
+          <div class="feature-item" data-image="screens/categories.png">
+            <span class="feature-badge pro">Pro</span>
+            <h3>Custom Categories</h3>
+            <p>Tired of squeezing your spending into categories that don't fit? Build your own — groups, categories, item suggestions, in any order you like. Drag to reorder. Your expenses, organised your way.</p>
+            <div class="feature-item-img"><img src="screens/categories.png" alt="Custom categories" /></div>
+          </div>
+
+          <div class="feature-item" data-image="screens/tags.png">
+            <span class="feature-badge pro">Pro</span>
+            <h3>Custom Tags</h3>
+            <p>Cash or card? You or the family? Need or want? Tag every expense your way with custom account and people labels. Filter by any combination — instantly.</p>
+            <div class="feature-item-img"><img src="screens/tags.png" alt="Custom tags" /></div>
+          </div>
+
+          <div class="feature-item" data-image="screens/reports.png">
+            <span class="feature-badge pro">Pro</span>
+            <h3>Reports &amp; PDF</h3>
+            <p>Your entire spending history, filterable by anything — date, category, account, people, priority, even notes. Compare any two periods side by side. Switch to the Family tab to see everyone's spending combined. Export a detailed PDF grouped by category. The last expense report tool you'll ever need.</p>
+            <div class="feature-item-img"><img src="screens/reports.png" alt="Reports" /></div>
+          </div>
+
+          <div class="feature-item" data-image="screens/profile.png">
+            <span class="feature-badge free">Free</span>
+            <h3>Profile</h3>
+            <p>Forgetting to log expenses? Set a daily reminder. Want faster login? Enable biometrics. Worried about losing your data? Manually backup locally or enable Auto backup to Google. App not feeling right? Tweak the language, currency, or theme. Need a clean slate? Wipe everything in one tap. Your app, your rules — all in one place.</p>
+            <div class="feature-item-img"><img src="screens/profile.png" alt="Profile" /></div>
+          </div>
+
+        </div>
+
+        <!-- Right: sticky image panel -->
+        <div class="features-image-pane">
+          <div class="features-mockup">
+            <img id="feature-img" src="screens/onboarding.png" alt="Feature screenshot" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Comparison table -->
+    <div class="container">
+      <div class="compare-wrap">
+        <div class="compare-header">
+          <h3>MoneyBoss Pro</h3>
+          <span class="compare-pill">7-day free trial</span>
+        </div>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Free</th>
+              <th>Pro</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Set Budget</td>              <td class="cell-check">✓</td><td class="cell-check">✓</td></tr>
+            <tr><td>Dashboard</td>               <td class="cell-check">✓</td><td class="cell-check">✓</td></tr>
+            <tr><td>Add Expense</td>             <td class="cell-check">✓</td><td class="cell-check">✓</td></tr>
+            <tr><td>Favourite</td>               <td class="cell-check">✓</td><td class="cell-check">✓</td></tr>
+            <tr><td>Calculator</td>              <td class="cell-check">✓</td><td class="cell-check">✓</td></tr>
+            <tr><td>Set Reminder</td>            <td class="cell-check">✓</td><td class="cell-check">✓</td></tr>
+            <tr><td>Dark Theme</td>              <td class="cell-check">✓</td><td class="cell-check">✓</td></tr>
+            <tr><td>Biometrics Login</td>        <td class="cell-check">✓</td><td class="cell-check">✓</td></tr>
+            <tr><td>Local Backup</td>            <td class="cell-check">✓</td><td class="cell-check">✓</td></tr>
+            <tr><td>Search &amp; Filter Expenses</td><td class="cell-text">Current month</td><td class="cell-text cell-text-pro">No limit</td></tr>
+            <tr><td>Family Sharing</td>          <td class="cell-text">Send only</td><td class="cell-text cell-text-pro">Send &amp; Receive</td></tr>
+            <tr><td>Custom Categories &amp; Tags</td><td class="cell-dash">—</td><td class="cell-check">✓</td></tr>
+            <tr><td>Advanced Reports</td>            <td class="cell-dash">—</td><td class="cell-check">✓</td></tr>
+            <tr><td>PDF Downloads</td>               <td class="cell-dash">—</td><td class="cell-check">✓</td></tr>
+            <tr><td>Auto Google Backup</td>          <td class="cell-dash">—</td><td class="cell-check">✓</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── About ── -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">About</p>
+        <h2 class="section-title">Track spending.<br>Not people.</h2>
+      </div>
+      <div class="about-body">
+        <p>Kyzenz builds simple, private apps for everyday life. We believe your data belongs to you — only you.</p>
+        <p>MoneyBoss Home is our first app. Built from the ground up with privacy, security, and simplicity as core principles. No account, no tracking, works completely offline.</p>
+        <p>Have a question, feedback, or just want to say hello? We'd love to hear from you.</p>
+        <p class="about-signature">— Dinesh</p>
+        <div class="about-contact">
+          <a class="contact-link" href="mailto:hello@kyzenz.com">
+            <span class="material-symbols-outlined">mail</span>
+            hello@kyzenz.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="container">
+      <span class="footer-copy">© 2026 Kyzenz · All rights reserved · <a class="footer-link" href="privacy.html">Privacy Policy</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // Coming soon badge
+    const comingSoon = document.querySelector('.btn-store.coming-soon');
+    if (comingSoon) {
+      comingSoon.addEventListener('click', e => {
+        e.preventDefault();
+        comingSoon.classList.add('show-tip');
+        setTimeout(() => comingSoon.classList.remove('show-tip'), 1500);
+      });
+    }
+
+    // Nav scroll effect
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // Active nav tab via scroll position
+    const tabs = document.querySelectorAll('.nav-tab[data-section]');
+    const sectionIds = ['overview', 'features', 'about'];
+
+    function updateActiveTab() {
+      const scrollY = window.scrollY + 80;
+      let current = sectionIds[0];
+      sectionIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= scrollY) current = id;
+      });
+      tabs.forEach(t => t.classList.remove('active'));
+      const active = document.querySelector(`.nav-tab[data-section="${current}"]`);
+      if (active) active.classList.add('active');
+    }
+
+    window.addEventListener('scroll', updateActiveTab);
+    updateActiveTab();
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Immediately highlight the clicked tab
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        // Scroll with explicit nav offset so section doesn't hide behind sticky nav
+        const el = document.getElementById(tab.dataset.section);
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY - 60;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Features sticky image — swap on scroll
+    const featureItems = document.querySelectorAll('.feature-item[data-image]');
+    const featureImg   = document.getElementById('feature-img');
+
+    if (featureImg && featureItems.length) {
+      // Preload all feature images so swaps are instant
+      featureItems.forEach(item => {
+        const src = item.dataset.image;
+        if (src) { const img = new Image(); img.src = src; }
+      });
+
+      const itemObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          document.querySelectorAll('.feature-item').forEach(i => i.classList.remove('active'));
+          entry.target.classList.add('active');
+          const src = entry.target.dataset.image;
+          if (src && !featureImg.src.endsWith(src)) {
+            featureImg.style.opacity = '0';
+            setTimeout(() => {
+              featureImg.src = src;
+              featureImg.style.opacity = '1';
+            }, 150);
+          }
+        });
+      // Fire only when item crosses the upper-third band of the viewport
+      }, { threshold: 0, rootMargin: '-25% 0px -65% 0px' });
+
+      featureItems.forEach(item => itemObserver.observe(item));
+
+      // Click to activate
+      featureItems.forEach(item => {
+        item.style.cursor = 'pointer';
+        item.addEventListener('click', () => {
+          document.querySelectorAll('.feature-item').forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
+          const src = item.dataset.image;
+          if (src && !featureImg.src.endsWith(src)) {
+            featureImg.style.opacity = '0';
+            setTimeout(() => {
+              featureImg.src = src;
+              featureImg.style.opacity = '1';
+            }, 150);
+          }
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kyzenz — Simple, Private Apps</title>
+  <meta name="description" content="Kyzenz builds simple, private apps for everyday life. No accounts, no ads, your data stays yours." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Kyzenz" />
+  <meta property="og:description" content="Simple, private apps for everyday life." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kyzenz.com/" />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Variables ── */
+    :root {
+      --dark:       #0a0a0a;
+      --accent:     #0d9488;
+      --font:       'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-width:  1100px;
+    }
+
+    /* ── Base ── */
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--dark);
+      color: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: radial-gradient(ellipse at 50% 0%, rgba(13,148,136,0.22) 0%, transparent 60%);
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Nav ── */
+    nav {
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s, border-color 0.3s;
+      z-index: 100;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .nav-contact {
+      font-size: 14px;
+      font-weight: 500;
+      color: #64748b;
+      transition: color 0.2s;
+    }
+    .nav-contact:hover { color: #ffffff; }
+
+    /* ── Hero ── */
+    .hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero .container { position: relative; }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #2dd4bf;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+    }
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 64px);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.05;
+      color: #ffffff;
+      margin-bottom: 24px;
+    }
+    .hero p {
+      font-size: 18px;
+      color: #94a3b8;
+      max-width: 440px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+    .hero .hero-kaizen {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      color: #64748b;
+      margin-top: 64px;
+    }
+    @keyframes btn-shimmer {
+      0%, 100% { border-color: rgba(45,212,191,0.2); }
+      50%       { border-color: rgba(45,212,191,0.6); }
+    }
+    .btn-explore {
+      display: inline-block;
+      margin-top: 36px;
+      padding: 8px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      color: #2dd4bf;
+      background: rgba(13,148,136,0.12);
+      border: 1px solid rgba(45,212,191,0.2);
+      border-radius: 10px;
+      animation: btn-shimmer 2s ease-in-out infinite;
+      transition: background 0.2s;
+    }
+    .btn-explore:hover { background: rgba(13,148,136,0.22); animation: none; border-color: rgba(45,212,191,0.5); }
+
+    /* ── Footer ── */
+    footer {
+      padding: 32px 0;
+    }
+    footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: #334155;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .hero   { padding: 80px 0 72px; }
+      .hero p { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <span class="nav-logo">Kyzenz</span>
+      <div class="nav-links">
+        <a class="nav-contact" href="mailto:hello@kyzenz.com">hello@kyzenz.com</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-eyebrow">Welcome to Kyzenz</span>
+      <h1>Simple apps for<br>everyday life</h1>
+      <p>We build private, offline-first apps that put you in control of your data.</p>
+      <a class="btn-explore" href="/moneybosshome/mbh.html">Explore MoneyBoss Home</a>
+      <p class="hero-kaizen">Kyzenz (Kaizen) &mdash; &ldquo;continuous improvement&rdquo;<br>or &ldquo;change for the better&rdquo;</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <span class="footer-copy">© 2026 Kyzenz. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    });
+  </script>
+
+</body>
+</html>
