@@ -117,6 +117,13 @@ A step-by-step reference of all optimisations and improvements made to the site.
 - `index.html` — uses `feature.png` (Kyzenz homepage banner)
 - `mbh.html` — uses `screens/feature.png` (MoneyBoss Home Play Store feature graphic)
 
+## 16. Help Page Sync (help.html)
+- Rewrote `moneybosshome/help.html` FAQ to match `D:/Project/Code/moneybosshome/assets/app help.md`
+- Expanded from 7 sections to 13 sections matching the app's in-app help exactly:
+  Getting Started, Dashboard & Budget, Adding Expenses, Favourites, Archive, Categories, Tags, Reports, Family Sharing, Backup & Restore, Security, Pro & Membership, Account & Data
+- Keeps the existing dark-theme HTML structure (details/summary accordions, faq-section divs)
+- Update this file whenever in-app help content changes
+
 ## Future Improvements
 - Consider WebP format for screen images (30-50% smaller than PNG)
 - Add lazy loading (`loading="lazy"`) to feature screen images for faster initial load
