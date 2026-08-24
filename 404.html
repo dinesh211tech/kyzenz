@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found — Kyzenz</title>
+
+  <link rel="icon" type="image/png" href="kz-icon.png" />
+  <link rel="apple-touch-icon" href="kz-icon.png" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DRWL74TMQK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DRWL74TMQK');
+  </script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:   #0a0a0a;
+      --teal:   #2dd4bf;
+      --muted:  #94a3b8;
+      --subtle: #475569;
+      --font:   'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--dark);
+      background-image: radial-gradient(ellipse at 50% 0%, rgba(13,148,136,0.22) 0%, transparent 55%);
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { padding: 0 24px; }
+
+    .code {
+      font-size: clamp(80px, 15vw, 140px);
+      font-weight: 800;
+      letter-spacing: -4px;
+      line-height: 1;
+      color: var(--teal);
+      opacity: 0.15;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--teal);
+      background: rgba(13,148,136,0.12);
+      border: 1px solid rgba(45,212,191,0.25);
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: rgba(13,148,136,0.22); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="code">404</div>
+    <h1>Page not found</h1>
+    <p>The page you're looking for doesn't exist or has been moved.</p>
+    <a class="btn" href="/">Back to Kyzenz</a>
+  </div>
+</body>
+</html>
