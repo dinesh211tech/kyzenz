@@ -17,7 +17,7 @@
   <meta property="og:description" content="Track expenses privately and offline. No account needed, no ads, completely free." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://kyzenz.com/moneybosshome/mbh.html" />
-  <meta property="og:image" content="https://kyzenz.com/moneybosshome/mb-icon.png" />
+  <meta property="og:image" content="https://kyzenz.com/moneybosshome/screens/feature.png" />
 
   <link rel="icon" type="image/png" href="../kz-icon.png" />
   <link rel="apple-touch-icon" href="../kz-icon.png" />
@@ -104,13 +104,17 @@
       width: 100%;
     }
     .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       font-size: 14px;
       font-weight: 500;
       color: var(--text-subtle);
       transition: color 0.2s;
       white-space: nowrap;
     }
-    .nav-back::before { content: '← '; }
+    .nav-back::before { content: '←'; font-size: 14px; }
+    .nav-back img { height: 24px; width: 24px; border-radius: 6px; display: block; }
     .nav-back:hover   { color: var(--text); }
     .nav-tabs { display: flex; gap: 2px; }
     .nav-tab {
@@ -350,7 +354,7 @@
       opacity: 0.3;
       transition: opacity 0.4s;
     }
-    .feature-item:first-child { border-top: none; padding-top: 0; }
+    .feature-item:first-child { border-top: none; padding-top: 28px; }
     .feature-item.active { opacity: 1; }
     .feature-badge {
       display: inline-flex;
@@ -578,7 +582,7 @@
   <!-- ── Nav ── -->
   <nav id="main-nav">
     <div class="container">
-      <a class="nav-back" href="/">Kyzenz</a>
+      <a class="nav-back" href="/"><img src="../kz-icon.png" alt="Kyzenz" />Kyzenz</a>
       <div class="nav-tabs">
         <button class="nav-tab" data-section="overview">Overview</button>
         <button class="nav-tab" data-section="features">Features</button>

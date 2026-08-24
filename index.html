@@ -11,7 +11,7 @@
   <meta property="og:description" content="Simple, private apps for everyday life." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://kyzenz.com/" />
-  <meta property="og:image" content="https://kyzenz.com/kz-icon.png" />
+  <meta property="og:image" content="https://kyzenz.com/feature.png" />
 
   <link rel="icon" type="image/png" href="kz-icon.png" />
   <link rel="apple-touch-icon" href="kz-icon.png" />
@@ -84,7 +84,18 @@
       justify-content: space-between;
     }
     .nav-logo {
-      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo img {
+      height: 32px;
+      width: 32px;
+      border-radius: 8px;
+      display: block;
+    }
+    .nav-logo span {
+      font-size: 18px;
       font-weight: 800;
       letter-spacing: -0.5px;
       color: #ffffff;
@@ -192,7 +203,7 @@
   <!-- Navigation -->
   <nav>
     <div class="container">
-      <span class="nav-logo">Kyzenz</span>
+      <a class="nav-logo" href="/"><img src="kz-icon.png" alt="Kyzenz" /><span>Kyzenz</span></a>
       <div class="nav-links">
         <a class="nav-contact" href="mailto:hello@kyzenz.com">hello@kyzenz.com</a>
       </div>
