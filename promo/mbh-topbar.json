@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "imageUrl": "https://www.kyzenz.com/promo/mbd-icon.png",
+      "tapUrl": "https://www.kyzenz.com/"
+    },
+    {
+      "imageUrl": "https://www.kyzenz.com/promo/mbh-icon.png",
+      "tapUrl": "https://www.kyzenz.com/moneybosshome/mbh.html#app"
+    }
+  ]
+}
