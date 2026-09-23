@@ -26,6 +26,21 @@ moneybosshome/             # kyzenz.com/moneybosshome/
   mb-icon.png              # MoneyBoss Home icon (og:image only)
   screens/                 # Compressed app screenshots (used in mbh.html)
   screens OG/              # Original uncompressed screenshots (not referenced in HTML)
+
+promo/                     # kyzenz.com/promo/ — feeds MoneyBoss Home's in-app
+                            # cross-promo banner (see D:\Project\Code\moneybosshome,
+                            # lib/config/promo_config.dart + lib/ui/core/widgets/promo_banner.dart)
+  mbh-topbar.json           # Manifest MBH fetches at runtime: list of
+                             # {lightImageUrl, darkImageUrl, tapUrl}, cycled in
+                             # array order. Edit this (and/or add icon PNGs
+                             # here) to change what MBH promotes — no app
+                             # update needed. MBH caches it 24h.
+  mbh-icon-light.png        # MBH icon, light/dark pair — copied from
+  mbh-icon-dark.png         # moneybosshome/assets/icons/logo black|white.png
+  mbd-icon-light.png        # MoneyBoss Drive icon, light/dark pair — copied
+  mbd-icon-dark.png         # from moneybossdrive/assets/icons/logo black|white.png
+  kz-icon.png               # Kyzenz mark — background-free, so one file
+                             # covers both the light and dark theme slots
 ```
 
 ## Deployment
