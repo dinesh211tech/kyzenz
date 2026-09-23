@@ -1,19 +1,23 @@
 {
   "items": [
     {
-      "imageUrl": "https://www.kyzenz.com/promo/mbh-icon.png",
+      "lightImageUrl": "https://www.kyzenz.com/promo/mbh-icon-light.png",
+      "darkImageUrl": "https://www.kyzenz.com/promo/mbh-icon-dark.png",
       "tapUrl": "https://www.kyzenz.com/moneybosshome/mbh.html#app"
     },
     {
-      "imageUrl": "https://www.kyzenz.com/promo/kz-icon.png",
+      "lightImageUrl": "https://www.kyzenz.com/promo/kz-icon.png",
+      "darkImageUrl": "https://www.kyzenz.com/promo/kz-icon.png",
       "tapUrl": "https://www.kyzenz.com/"
     },
     {
-      "imageUrl": "https://www.kyzenz.com/promo/mbd-icon.png",
+      "lightImageUrl": "https://www.kyzenz.com/promo/mbd-icon-light.png",
+      "darkImageUrl": "https://www.kyzenz.com/promo/mbd-icon-dark.png",
       "tapUrl": "https://www.kyzenz.com/"
     },
     {
-      "imageUrl": "https://www.kyzenz.com/promo/kz-icon.png",
+      "lightImageUrl": "https://www.kyzenz.com/promo/kz-icon.png",
+      "darkImageUrl": "https://www.kyzenz.com/promo/kz-icon.png",
       "tapUrl": "https://www.kyzenz.com/"
     }
   ]
