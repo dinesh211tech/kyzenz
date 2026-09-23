@@ -84,6 +84,6 @@ Each page is a self-contained HTML file with inline `<style>` — no external CS
 
 - **Package ID**: `com.kyzenz.moneybosshome`
 - **Play Store URL**: `https://play.google.com/store/apps/details?id=com.kyzenz.moneybosshome`
-- **iOS**: Coming soon (App Store badge shown with "coming soon" tooltip)
+- **iOS**: Live — `https://apps.apple.com/us/app/moneyboss-home/id6791548186`
 - **Current version**: v1.0.0 (update in mbh.html hero section when releasing)
 - **Pro subscription**: handled via Google Play, App Store, and RevenueCat

@@ -207,26 +207,6 @@
     .btn-store { display: inline-flex; align-items: center; transition: opacity 0.2s; }
     .btn-store:hover { opacity: 0.8; }
     .btn-store img { display: block; border-radius: 8px; }
-    .btn-store.coming-soon { position: relative; cursor: pointer; }
-    .btn-store.coming-soon::after {
-      content: 'Coming soon';
-      position: absolute;
-      bottom: calc(100% + 8px);
-      left: 50%;
-      transform: translateX(-50%);
-      background: #1e293b;
-      color: #94a3b8;
-      font-size: 12px;
-      font-weight: 500;
-      padding: 5px 12px;
-      border-radius: 6px;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.15s;
-    }
-    .btn-store.coming-soon:hover::after,
-    .btn-store.coming-soon.show-tip::after { opacity: 1; }
 
     /* Right mockup */
     .hero-mockup {
@@ -624,7 +604,9 @@
               <img src="google-play-badge.png"
                    alt="Get it on Google Play" height="54" />
             </a>
-            <a class="btn-store coming-soon">
+            <a class="btn-store"
+               href="https://apps.apple.com/us/app/moneyboss-home/id6791548186"
+               target="_blank" rel="noopener noreferrer">
               <img src="app-store-badge.svg"
                    alt="Download on the App Store" height="38" />
             </a>
@@ -813,16 +795,6 @@
   </footer>
 
   <script>
-    // Coming soon badge
-    const comingSoon = document.querySelector('.btn-store.coming-soon');
-    if (comingSoon) {
-      comingSoon.addEventListener('click', e => {
-        e.preventDefault();
-        comingSoon.classList.add('show-tip');
-        setTimeout(() => comingSoon.classList.remove('show-tip'), 1500);
-      });
-    }
-
     // Nav scroll effect
     const nav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
