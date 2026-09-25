@@ -21,7 +21,7 @@
   <meta property="og:description" content="Track expenses privately and offline. No account, no signup, free forever." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://kyzenz.com/moneybosshome/mbh.html" />
-  <meta property="og:image" content="https://kyzenz.com/moneybosshome/screens/feature.png" />
+  <meta property="og:image" content="https://kyzenz.com/moneybosshome/Images/feature.png" />
 
   <link rel="icon" type="image/png" href="../kz-icon.png" />
   <link rel="apple-touch-icon" href="../kz-icon.png" />
@@ -136,6 +136,19 @@
     }
     .nav-tab:hover  { background: rgba(255,255,255,0.06); color: var(--text); }
     .nav-tab.active { background: rgba(13,148,136,0.15); color: var(--teal); }
+    .theme-toggle {
+      font-size: 15px;
+      line-height: 1;
+      padding: 6px 10px;
+      margin-left: 6px;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      color: var(--text-subtle);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .theme-toggle:hover { background: rgba(255,255,255,0.06); color: var(--text); }
 
     /* ── Overview / Hero ── */
     #overview {
@@ -572,6 +585,7 @@
         <button class="nav-tab" data-section="features">Features</button>
         <button class="nav-tab" data-section="about">About</button>
         <a      class="nav-tab" href="help.html">FAQ</a>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark-mode screenshots" title="Toggle theme">☀️</button>
       </div>
     </div>
   </nav>
@@ -584,7 +598,7 @@
         <!-- Left: text -->
         <div class="hero-left">
           <div class="hero-app-row">
-            <img class="app-icon" src="mb-icon.png" alt="MoneyBoss Home icon" />
+            <img class="app-icon" src="Images/mb_icon.png" alt="MoneyBoss Home icon" />
             <div>
               <div class="hero-app-name">MoneyBoss Home</div>
               <div class="hero-app-by">by Kyzenz</div>
@@ -604,13 +618,13 @@
             <a class="btn-store"
                href="https://play.google.com/store/apps/details?id=com.kyzenz.moneybosshome"
                target="_blank" rel="noopener noreferrer">
-              <img src="google-play-badge.png"
+              <img src="Images/google-play-badge.png"
                    alt="Get it on Google Play" height="54" />
             </a>
             <a class="btn-store"
                href="https://apps.apple.com/us/app/moneyboss-home/id6791548186"
                target="_blank" rel="noopener noreferrer">
-              <img src="app-store-badge.svg"
+              <img src="Images/app-store-badge.svg"
                    alt="Download on the App Store" height="38" />
             </a>
             <p style="font-size:12px;color:var(--text-subtle);margin-top:4px;flex-basis:100%;padding-left:8px;">Latest Version v1.0.0</p>
@@ -622,7 +636,7 @@
           <div class="phone-frame">
             <div class="phone-status-bar"><div class="phone-pill"></div></div>
             <div class="phone-screen">
-              <img src="screens/dashboard.png" alt="MoneyBoss Home dashboard" />
+              <img id="hero-img" data-base="dashboard" src="Images/dashboard_light.png" alt="MoneyBoss Home dashboard" />
             </div>
           </div>
         </div>
@@ -637,7 +651,7 @@
       <div class="section-header">
         <p class="section-eyebrow">Features</p>
         <h2 class="section-title">Everything you need,<br>nothing you don't</h2>
-        <p class="section-subtitle">Built to be private, offline, and fast — no account, no clutter.</p>
+        <p class="section-subtitle">Designed to be private first, offline first, and fast — no account, no clutter.</p>
       </div>
     </div>
 
@@ -647,74 +661,74 @@
         <!-- Left: scrollable feature list -->
         <div class="features-list">
 
-          <div class="feature-item active" data-image="screens/onboarding.png">
+          <div class="feature-item active" data-base="onboarding">
             <span class="feature-badge free">Free</span>
             <h3>Why MoneyBoss Home?</h3>
-            <p>Fed up with apps that trade your data for their profits? MoneyBoss Home is different. No account, no data shared — ever. Install it, track your spending, close it. Just you, your phone, and a clear picture of your spending. Free forever, by design. Pro is a convenience, never a requirement. Every feature is unlockable at no cost.</p>
-            <div class="feature-item-img"><img src="screens/onboarding.png" alt="MoneyBoss Home" /></div>
+            <p>Fed up with apps that trade your data for their profits? MoneyBoss Home is different. No account, no signup needed, and your expenses are never shared. Install it, track your spending, close it. Just you, your phone, and a clear picture of your spending. Free forever, by design. Pro is a convenience, never a requirement. Every feature is unlockable at no cost.</p>
+            <div class="feature-item-img"><img data-base="onboarding" src="Images/onboarding_light.png" alt="MoneyBoss Home" /></div>
           </div>
 
-          <div class="feature-item" data-image="screens/login.png">
+          <div class="feature-item" data-base="login">
             <span class="feature-badge free">Free</span>
             <h3>Your Data, Locked Safe</h3>
             <p>Your spending is nobody's business. Set a PIN and enable biometric login — fingerprint or face. After repeated wrong attempts the app locks automatically. Your expenses stay private and secure even if your phone is shared or lost.</p>
-            <div class="feature-item-img"><img src="screens/login.png" alt="Login screen" /></div>
+            <div class="feature-item-img"><img data-base="login" src="Images/login_light.png" alt="Login screen" /></div>
           </div>
 
-          <div class="feature-item" data-image="screens/dashboard.png">
+          <div class="feature-item" data-base="dashboard">
             <span class="feature-badge free">Free</span>
             <h3>Dashboard</h3>
             <p>Open the app and instantly know where you stand — monthly total, budget progress, top spends, and 12 months of history. Set a budget and watch it track in real time. Tap a pie slice to drill into any category. Swipe Top Spends for deeper insights. Your money, finally making sense — all signal, no noise.</p>
-            <div class="feature-item-img"><img src="screens/dashboard.png" alt="Dashboard" /></div>
+            <div class="feature-item-img"><img data-base="dashboard" src="Images/dashboard_light.png" alt="Dashboard" /></div>
           </div>
 
-          <div class="feature-item" data-image="screens/add.png">
+          <div class="feature-item" data-base="add">
             <span class="feature-badge free">Free</span>
             <h3>Add Expense</h3>
             <p>No friction, no faff. Pick a category, type the amount, done — in under ten seconds. Built-in calculator, smart item suggestions, account tagging, collapsible categories, favourites and your recent expenses — all in one screen. Tracking money has never felt this effortless.</p>
-            <div class="feature-item-img"><img src="screens/add.png" alt="Add expense" /></div>
+            <div class="feature-item-img"><img data-base="add" src="Images/add_light.png" alt="Add expense" /></div>
           </div>
 
-          <div class="feature-item" data-image="screens/recent.png">
+          <div class="feature-item" data-base="recent">
             <span class="feature-badge free">Free</span>
             <h3>Search &amp; Filter</h3>
             <p>Every expense you've logged is one scroll away — your recent list. Search by item, filter by category, account, priority, people or notes — and tap any row to edit instantly. Full control, zero friction.</p>
-            <div class="feature-item-img"><img src="screens/recent.png" alt="Search and filter" /></div>
+            <div class="feature-item-img"><img data-base="recent" src="Images/recent_light.png" alt="Search and filter" /></div>
           </div>
 
-          <div class="feature-item" data-image="screens/family.png">
+          <div class="feature-item" data-base="family">
             <span class="feature-badge pro">Pro</span>
             <h3>Family Sharing</h3>
             <p>See what the whole family spent — not just your half. Each member generates a QR, you scan it, and in seconds you have a combined family report. No internet. No server. No shared account. No company in the middle. Just a scan and a completely private family picture. Fully offline, by design.</p>
-            <div class="feature-item-img"><img src="screens/family.png" alt="Family sharing" /></div>
+            <div class="feature-item-img"><img data-base="family" src="Images/family_light.png" alt="Family sharing" /></div>
           </div>
 
-          <div class="feature-item" data-image="screens/tags.png">
+          <div class="feature-item" data-base="tags">
             <span class="feature-badge pro">Pro</span>
             <h3>Custom Tags</h3>
             <p>Cash or card? You or the family? Need or want? Tag every expense your way with custom account and people labels. Filter by any combination — instantly.</p>
-            <div class="feature-item-img"><img src="screens/tags.png" alt="Custom tags" /></div>
+            <div class="feature-item-img"><img data-base="tags" src="Images/tags_light.png" alt="Custom tags" /></div>
           </div>
 
-          <div class="feature-item" data-image="screens/categories.png">
+          <div class="feature-item" data-base="categories">
             <span class="feature-badge pro">Pro</span>
             <h3>Custom Categories</h3>
             <p>Tired of squeezing your spending into categories that don't fit? Build your own — groups, categories, item suggestions, in any order you like. Drag to reorder. Your expenses, organised your way.</p>
-            <div class="feature-item-img"><img src="screens/categories.png" alt="Custom categories" /></div>
+            <div class="feature-item-img"><img data-base="categories" src="Images/categories_light.png" alt="Custom categories" /></div>
           </div>
 
-          <div class="feature-item" data-image="screens/reports.png">
+          <div class="feature-item" data-base="reports">
             <span class="feature-badge pro">Pro</span>
             <h3>Reports &amp; PDF</h3>
             <p>Your entire spending history, filterable by anything — date, category, account, people, priority, even notes. Compare any two periods side by side. Switch to the Family tab to see everyone's spending combined. Export a detailed PDF grouped by category. The last expense report tool you'll ever need.</p>
-            <div class="feature-item-img"><img src="screens/reports.png" alt="Reports" /></div>
+            <div class="feature-item-img"><img data-base="reports" src="Images/reports_light.png" alt="Reports" /></div>
           </div>
 
-          <div class="feature-item" data-image="screens/profile.png">
+          <div class="feature-item" data-base="profile">
             <span class="feature-badge free">Free</span>
             <h3>Profile</h3>
             <p>Forgetting to log expenses? Set a daily reminder. Want faster login? Enable biometrics. Worried about losing your data? Manually backup locally or enable Auto backup to Google. App not feeling right? Tweak the language, currency, or theme. Need a clean slate? Wipe everything in one tap. Your app, your rules — all in one place.</p>
-            <div class="feature-item-img"><img src="screens/profile.png" alt="Profile" /></div>
+            <div class="feature-item-img"><img data-base="profile" src="Images/profile_light.png" alt="Profile" /></div>
           </div>
 
         </div>
@@ -722,7 +736,7 @@
         <!-- Right: sticky image panel -->
         <div class="features-image-pane">
           <div class="features-mockup">
-            <img id="feature-img" src="screens/onboarding.png" alt="Feature screenshot" />
+            <img id="feature-img" data-base="onboarding" src="Images/onboarding_light.png" alt="Feature screenshot" />
           </div>
         </div>
 
@@ -776,7 +790,7 @@
       </div>
       <div class="about-body">
         <p>Kyzenz builds simple, private apps for everyday life. We believe your data belongs to you — only you.</p>
-        <p>MoneyBoss Home is our first app. Built from the ground up with privacy, security, and simplicity as core principles. No account, no tracking, works completely offline.</p>
+        <p>MoneyBoss Home is our first app. Built from the ground up with privacy, security, and simplicity as core principles. No account or signup needed, works fully offline for everyday tracking, and your expenses are never tracked, monitored, or shared.</p>
         <p>Have a question, feedback, or just want to say hello? We'd love to hear from you.</p>
         <p class="about-signature">— Dinesh</p>
         <div class="about-contact">
@@ -836,24 +850,60 @@
       });
     });
 
+    // Screenshot theme (light/dark app screenshots) — independent of the
+    // site's own (always-dark) color scheme. Persisted per visitor.
+    const SHOT_THEME_KEY = 'mbh-shot-theme';
+    let shotTheme = 'light';
+    try { shotTheme = localStorage.getItem(SHOT_THEME_KEY) || 'light'; } catch (e) {}
+
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const shotImages = document.querySelectorAll('[data-base]');
+
+    // Preload both themes for every screenshot so toggling is instant
+    shotImages.forEach(img => {
+      ['dark', 'light'].forEach(theme => {
+        const pre = new Image();
+        pre.src = `Images/${img.dataset.base}_${theme}.png`;
+      });
+    });
+
+    function applyShotTheme(theme) {
+      shotTheme = theme;
+      shotImages.forEach(img => {
+        img.src = `Images/${img.dataset.base}_${theme}.png`;
+      });
+      if (themeToggleBtn) {
+        themeToggleBtn.textContent = theme === 'dark' ? '🌙' : '☀️';
+        themeToggleBtn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+        themeToggleBtn.setAttribute(
+          'aria-label',
+          theme === 'dark' ? 'Switch to light-mode screenshots' : 'Switch to dark-mode screenshots'
+        );
+      }
+      try { localStorage.setItem(SHOT_THEME_KEY, theme); } catch (e) {}
+    }
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        applyShotTheme(shotTheme === 'dark' ? 'light' : 'dark');
+      });
+    }
+
+    applyShotTheme(shotTheme);
+
     // Features sticky image — swap on scroll
-    const featureItems = document.querySelectorAll('.feature-item[data-image]');
+    const featureItems = document.querySelectorAll('.feature-item[data-base]');
     const featureImg   = document.getElementById('feature-img');
 
     if (featureImg && featureItems.length) {
-      // Preload all feature images so swaps are instant
-      featureItems.forEach(item => {
-        const src = item.dataset.image;
-        if (src) { const img = new Image(); img.src = src; }
-      });
-
       const itemObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
           document.querySelectorAll('.feature-item').forEach(i => i.classList.remove('active'));
           entry.target.classList.add('active');
-          const src = entry.target.dataset.image;
-          if (src && !featureImg.src.endsWith(src)) {
+          const src = `Images/${entry.target.dataset.base}_${shotTheme}.png`;
+          if (!featureImg.src.endsWith(src)) {
+            featureImg.dataset.base = entry.target.dataset.base;
             featureImg.style.opacity = '0';
             setTimeout(() => {
               featureImg.src = src;
@@ -872,8 +922,9 @@
         item.addEventListener('click', () => {
           document.querySelectorAll('.feature-item').forEach(i => i.classList.remove('active'));
           item.classList.add('active');
-          const src = item.dataset.image;
-          if (src && !featureImg.src.endsWith(src)) {
+          const src = `Images/${item.dataset.base}_${shotTheme}.png`;
+          if (!featureImg.src.endsWith(src)) {
+            featureImg.dataset.base = item.dataset.base;
             featureImg.style.opacity = '0';
             setTimeout(() => {
               featureImg.src = src;
