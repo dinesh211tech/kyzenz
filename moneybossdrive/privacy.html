@@ -135,6 +135,26 @@
       text-underline-offset: 3px;
     }
 
+    .policy-block h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 20px 0 8px;
+    }
+    .table-wrap { overflow-x: auto; margin-top: 12px; }
+    .policy-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 480px; }
+    .policy-table th, .policy-table td {
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      text-align: left;
+      color: var(--text-body);
+    }
+    .policy-table th {
+      color: var(--text);
+      font-weight: 600;
+      background: rgba(255,255,255,0.03);
+    }
+
     /* ── Footer ── */
     footer { border-top: 1px solid var(--border); padding: 24px 0; }
     footer .container {
@@ -168,7 +188,88 @@
   <div class="policy-wrap">
     <div class="container">
 
-      <!-- Policy sections go here -->
+      <div class="policy-block">
+        <h3>Overview</h3>
+        <p>MoneyBoss Drive is designed to keep your vehicle expense data on your device. All logs — fuel, service, insurance, repairs — are stored locally and are never seen, collected, or shared by Kyzenz in any identifiable form. No account or sign-up is required to use the app.</p>
+        <p>One feature, the Leaderboard, uses anonymised and aggregated cost data to let you compare running costs against similar vehicles. This is the only case where any data derived from your logs leaves your device, and it is covered in detail below under &ldquo;Benchmark &amp; Leaderboard Data&rdquo;.</p>
+      </div>
+
+      <div class="policy-block">
+        <h3>Permissions We Request</h3>
+        <p>MoneyBoss Drive requests the following device permissions, each limited to a single purpose:</p>
+        <ul>
+          <li><strong>Notifications</strong> &mdash; service and fuel reminders are scheduled locally on your device. No notification data is sent to Kyzenz servers, and notifications can be disabled anytime in the app settings.</li>
+          <li><strong>Biometric authentication</strong> &mdash; if you enable fingerprint or face login, authentication happens entirely on your device&rsquo;s secure hardware. Biometric data never leaves your device and is never accessible to MoneyBoss Drive or Kyzenz.</li>
+        </ul>
+      </div>
+
+      <div class="policy-block">
+        <h3>Data We Collect</h3>
+        <p>Your raw vehicle expense records are stored locally on your device in a private database. They are:</p>
+        <ul>
+          <li>Never uploaded to Kyzenz servers in any identifiable form</li>
+          <li>Never used for advertising or sold to third parties</li>
+          <li>Only accessible to the MoneyBoss Drive app on your device</li>
+        </ul>
+        <p>The app includes no analytics SDKs and no crash-reporting services.</p>
+      </div>
+
+      <div class="policy-block">
+        <h3>Benchmark &amp; Leaderboard Data</h3>
+        <p>The Leaderboard feature shows how your vehicle&rsquo;s running costs compare to similar vehicles driven by other users. To make this work, MoneyBoss Drive derives an <strong>anonymous aggregate</strong> from your local data and sends it to our server (Supabase). This aggregate contains:</p>
+        <ul>
+          <li>Vehicle attributes: make, model year, body type, wheels, transmission, fuel type, induction, engine size, power, torque, and wheel size</li>
+          <li>Aggregated cost figures (fuel cost per km, total running cost per km) &mdash; not individual expense records</li>
+        </ul>
+        <p>This aggregate <strong>does not</strong> contain your name, device ID, account details, or any individual expense entries. It cannot be traced back to you. Kyzenz uses this data solely to compute benchmark averages for the Leaderboard and for nothing else.</p>
+        <p>The free plan allows one Leaderboard refresh per day, unlocked by watching a rewarded ad. Pro subscribers get unlimited refreshes with no ads.</p>
+      </div>
+
+      <div class="policy-block">
+        <h3>Optional Features &amp; Third-Party Services</h3>
+
+        <h4>Advertising (Google AdMob)</h4>
+        <p>Free users can refresh the Leaderboard once per day by watching a short rewarded video ad, powered by Google AdMob. These ads are <strong>non-personalized</strong> &mdash; Google does not use your browsing history, advertising ID, or a behavioural profile to choose which ad you see, and the ads never see your vehicle or expense data.</p>
+        <p>You can avoid ads entirely by upgrading to Pro. Learn more at <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google&rsquo;s Partner Sites policy</a>.</p>
+
+        <h4>In-App Purchases</h4>
+        <p>MoneyBoss Drive Pro is an optional subscription available through Google Play and the App Store. Purchase transactions are handled by Google Play, the App Store, and RevenueCat. We receive only confirmation that a valid purchase has been made &mdash; no payment details or personal financial information is shared with Kyzenz.</p>
+
+        <h4>At a Glance</h4>
+        <div class="table-wrap">
+          <table class="policy-table">
+            <thead>
+              <tr><th>Party</th><th>What they receive</th><th>Kyzenz access</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Kyzenz (Supabase)</td><td>Anonymous vehicle cost aggregates for the Leaderboard</td><td>Aggregate figures only &mdash; no personal data</td></tr>
+              <tr><td>Google AdMob</td><td>Non-personalized ad request signals (only if you watch an ad)</td><td>None &mdash; never sees expense data</td></tr>
+              <tr><td>RevenueCat / Google Play / App Store</td><td>Purchase status only (only if you buy Pro)</td><td>None &mdash; no payment details</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="policy-block">
+        <h3>Compliance &amp; Your Rights</h3>
+        <p>If you&rsquo;re located in the European Economic Area, the United Kingdom, or Switzerland, MoneyBoss Drive shows a consent dialog (via Google&rsquo;s User Messaging Platform) before requesting any ad, letting you choose whether non-personalized ads can be shown. You can review or change this choice anytime from Profile &rarr; Privacy Options.</p>
+        <p>MoneyBoss Drive is not directed at children under 13, and we do not knowingly collect information from children.</p>
+      </div>
+
+      <div class="policy-block">
+        <h3>Data Deletion</h3>
+        <p>You can delete all your local data at any time from Profile &rarr; Delete Account, which permanently removes your profile and all records from the device. Anonymous benchmark aggregates already contributed to the Leaderboard cannot be individually identified or removed, as they are not linked to you in any way.</p>
+      </div>
+
+      <div class="policy-block">
+        <h3>Changes to This Policy</h3>
+        <p>If we update this policy, the revised version will be posted at this URL with an updated date. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+      </div>
+
+      <div class="policy-block">
+        <h3>Contact</h3>
+        <p>Questions or concerns? Contact us at <a href="mailto:hello@kyzenz.com">hello@kyzenz.com</a>.</p>
+      </div>
 
     </div>
   </div>
