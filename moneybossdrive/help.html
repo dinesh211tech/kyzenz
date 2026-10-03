@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Help &amp; FAQ — MoneyBoss Drive | Kyzenz</title>
+  <meta name="description" content="Help and frequently asked questions for MoneyBoss Drive." />
+
+  <meta property="og:title" content="Help &amp; FAQ — MoneyBoss Drive" />
+  <meta property="og:description" content="Help and frequently asked questions for MoneyBoss Drive by Kyzenz." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kyzenz.com/moneybossdrive/help.html" />
+  <meta property="og:image" content="https://kyzenz.com/kz-icon.png" />
+
+  <link rel="icon" type="image/png" href="../kz-icon.png" />
+  <link rel="apple-touch-icon" href="../kz-icon.png" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DRWL74TMQK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DRWL74TMQK');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:       #0a0a0a;
+      --surface:    #111111;
+      --border:     rgba(255,255,255,0.08);
+      --text:       #ffffff;
+      --text-muted: #94a3b8;
+      --text-subtle:#475569;
+      --accent:     #0d9488;
+      --teal:       #2dd4bf;
+      --font:       'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius:     14px;
+      --max-width:  1100px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--dark);
+      background-image: radial-gradient(ellipse at 50% 0%, rgba(13,148,136,0.22) 0%, transparent 55%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Nav ── */
+    nav {
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s, border-color 0.3s;
+      z-index: 100;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.95);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-back {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-subtle);
+      transition: color 0.2s;
+    }
+    .nav-back::before { content: '← '; }
+    .nav-back:hover   { color: var(--text); }
+    .nav-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* ── Page header ── */
+    .page-header {
+      padding: 72px 0 48px;
+    }
+    .page-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .page-header h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .page-header p {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
+
+    /* ── FAQ ── */
+    .faq-wrap { padding: 0 0 80px; }
+
+    .faq-section { margin-bottom: 40px; }
+    .faq-section-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    details {
+      border-bottom: 1px solid var(--border);
+    }
+    details:last-child { border-bottom: none; }
+
+    summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 0;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '+';
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--text-subtle);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+    details[open] summary { color: var(--teal); }
+
+    .faq-answer {
+      padding: 0 0 20px;
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .faq-answer p + p { margin-top: 10px; }
+    .faq-answer ul {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+    .faq-answer ul li { margin-bottom: 6px; }
+    .faq-answer a {
+      color: var(--teal);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── Contact strip ── */
+    .contact-strip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 80px;
+    }
+    .contact-strip-text h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .contact-strip-text p  { font-size: 14px; color: var(--text-muted); }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--teal);
+      background: rgba(13,148,136,0.12);
+      border: 1px solid rgba(45,212,191,0.2);
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .contact-btn:hover { opacity: 0.8; }
+    .contact-btn .material-symbols-outlined { font-size: 18px; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+    }
+    footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-copy { font-size: 13px; color: var(--text-subtle); }
+    .footer-link { font-size: 13px; color: var(--text-subtle); transition: color 0.2s; }
+    .footer-link:hover { color: var(--text); }
+    .footer-sep { font-size: 13px; color: var(--border); }
+
+    @media (max-width: 560px) {
+      .page-header    { padding: 52px 0 36px; }
+      .contact-strip  { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ── -->
+  <nav id="main-nav">
+    <div class="container">
+      <a class="nav-back" href="mbd.html">MoneyBoss Drive</a>
+      <span class="nav-title">Help &amp; FAQ</span>
+    </div>
+  </nav>
+
+  <!-- ── Page header ── -->
+  <div class="page-header">
+    <div class="container">
+      <p class="page-eyebrow">Help &amp; FAQ</p>
+      <h1>How can we help?</h1>
+      <p>Answers to the most common questions about MoneyBoss Drive.</p>
+    </div>
+  </div>
+
+  <!-- ── FAQ ── -->
+  <div class="faq-wrap">
+    <div class="container">
+
+      <!-- Getting Started -->
+      <div class="faq-section">
+        <div class="faq-section-title">Getting Started</div>
+        <details>
+          <summary>How do I set up the app?</summary>
+          <div class="faq-answer"><p>On first launch, enter your name and set a 4-digit PIN. That's it — no sign-up or account is required to use the app.</p></div>
+        </details>
+        <details>
+          <summary>How do I add my first vehicle?</summary>
+          <div class="faq-answer"><p>Go to the Garage tab and tap Add Vehicle. Fill in its specifications, tap Save, then fill in Purchase Details and tap Save.</p></div>
+        </details>
+        <details>
+          <summary>How do I change my name?</summary>
+          <div class="faq-answer"><p>Go to Profile → Name and edit it there.</p></div>
+        </details>
+        <details>
+          <summary>How do I change the app language?</summary>
+          <div class="faq-answer"><p>Go to Profile → Language and pick from the list.</p></div>
+        </details>
+        <details>
+          <summary>How do I enable biometrics?</summary>
+          <div class="faq-answer"><p>Go to Profile and turn on Biometrics. You'll still be asked for your PIN occasionally — biometrics is a shortcut, not a replacement for it.</p></div>
+        </details>
+        <details>
+          <summary>How do I set a daily reminder?</summary>
+          <div class="faq-answer"><p>Go to Profile → Reminder and pick a time. You'll get a daily nudge to log today's expenses and refresh your Compare rank.</p></div>
+        </details>
+        <details>
+          <summary>How do I switch between light and dark theme?</summary>
+          <div class="faq-answer"><p>Go to Profile → Theme and choose System, Light, or Dark.</p></div>
+        </details>
+      </div>
+
+      <!-- Garage & Vehicles -->
+      <div class="faq-section">
+        <div class="faq-section-title">Garage &amp; Vehicles</div>
+        <details>
+          <summary>How many vehicles can I add?</summary>
+          <div class="faq-answer"><p>As many as you like — adding vehicles is free, with no limit.</p></div>
+        </details>
+        <details>
+          <summary>How do I switch between vehicles?</summary>
+          <div class="faq-answer"><p>Swipe the vehicle picker at the top of Home, Add, Garage, or Compare. Switching there updates the active vehicle everywhere else in the app too.</p></div>
+        </details>
+        <details>
+          <summary>What's the difference between archiving and deleting a vehicle?</summary>
+          <div class="faq-answer"><p>Archiving (open the vehicle in Garage → Archive) hides it from your active list but keeps every record — restore it anytime from Profile → Data → Archived Vehicles. Deleting (Profile → Data → Delete Vehicles, PIN-protected) permanently removes the vehicle and everything logged against it, and can't be undone.</p></div>
+        </details>
+        <details>
+          <summary>What is Purpose (Personal/Commercial)?</summary>
+          <div class="faq-answer"><p>A label for how you use the vehicle. It only affects Compare — a Commercial vehicle with real income logged gets a small 🚕 marker next to its name there.</p></div>
+        </details>
+        <details>
+          <summary>Can I change a vehicle's Country, Currency, Odometer Unit, or Fuel Volume Unit later?</summary>
+          <div class="faq-answer"><p>Yes, from Garage → Edit Vehicle. These are independent settings — changing one doesn't change the others — so set each to match how you actually use the vehicle.</p></div>
+        </details>
+        <details>
+          <summary>Does the app support electric vehicles?</summary>
+          <div class="faq-answer"><p>Yes. Choose Electric as the fuel type and fuel is tracked in kWh instead of litres — Mileage and cost figures adjust automatically.</p></div>
+        </details>
+      </div>
+
+      <!-- Logging -->
+      <div class="faq-section">
+        <div class="faq-section-title">Logging</div>
+        <details>
+          <summary>What can I log for a vehicle?</summary>
+          <div class="faq-answer"><p>Fuel, Maintenance, Accessories, and Income — each has its own tab under Add. Trips get their own tab too (see the next section).</p></div>
+        </details>
+        <details>
+          <summary>What counts as Maintenance?</summary>
+          <div class="faq-answer"><p>Three groups: Service (periodic service, parts replacement, repairs, wash, tow), Papers (insurance, emission, fitness, permit, tax), and Charges (toll, pass, parking, fines, driver wage). Each group has its own "Other" category for anything that doesn't fit.</p></div>
+        </details>
+        <details>
+          <summary>Can I log income for a vehicle?</summary>
+          <div class="faq-answer"><p>Yes, under Add → Income — useful if you drive for a living. Once you've logged any income, Net Profit appears on Home and Compare.</p></div>
+        </details>
+        <details>
+          <summary>How do I edit or delete a log entry?</summary>
+          <div class="faq-answer"><p>Tap it in that tab's Recent list — it loads back into the form, with a delete option there too.</p></div>
+        </details>
+        <details>
+          <summary>Does logging require an internet connection?</summary>
+          <div class="faq-answer"><p>No. Every log — Fuel, Maintenance, Accessories, Income, Trips — is saved on your device and works fully offline.</p></div>
+        </details>
+      </div>
+
+      <!-- Trips & Mileage -->
+      <div class="faq-section">
+        <div class="faq-section-title">Trips &amp; Mileage</div>
+        <details>
+          <summary>How is overall Mileage calculated?</summary>
+          <div class="faq-answer"><p>Total distance driven ÷ total fuel used, across every Fuel log for that vehicle — recalculated fresh each time, never an average of past readings.</p></div>
+        </details>
+        <details>
+          <summary>What is the Trip tab for?</summary>
+          <div class="faq-answer"><p>Logging one named trip's start and stop odometer readings, separate from your regular Fuel logs.</p></div>
+        </details>
+        <details>
+          <summary>How is a trip's own mileage calculated?</summary>
+          <div class="faq-answer"><p>Only when both the start and stop fuel-ups are marked "tank full" — a true brim-to-brim reading. Without both, the trip still shows distance, just no mileage figure, since a partial fill can't be measured accurately.</p></div>
+        </details>
+        <details>
+          <summary>Can electric vehicles use the Trip tab?</summary>
+          <div class="faq-answer"><p>You can still log a trip's distance, but the tank-full toggle doesn't apply to them — tapping it shows a message explaining why, since there's no fuel brim to measure from.</p></div>
+        </details>
+      </div>
+
+      <!-- Home Dashboard -->
+      <div class="faq-section">
+        <div class="faq-section-title">Home Dashboard</div>
+        <details>
+          <summary>What do Total Cost/km and Running Cost/km mean?</summary>
+          <div class="faq-answer"><p>Total Cost/km includes everything — Purchase cost, accessories, fuel and maintenance. Running Cost/km covers only fuel and maintenance, so you can see your actual day-to-day running expense on its own.</p></div>
+        </details>
+        <details>
+          <summary>What is Net Profit?</summary>
+          <div class="faq-answer"><p>Income minus Running Cost. It only appears once you've logged at least one Income entry for that vehicle.</p></div>
+        </details>
+        <details>
+          <summary>Why do my cost figures change when I add an old log entry?</summary>
+          <div class="faq-answer"><p>Every figure is calculated fresh from your logs, not stored as a running total — adding or editing any past entry updates every number that depends on it right away.</p></div>
+        </details>
+        <details>
+          <summary>What does the reminder card on Home show?</summary>
+          <div class="faq-answer"><p>Any upcoming maintenance item you've set a due date or due odometer reading for, so you don't need a separate alert for it.</p></div>
+        </details>
+      </div>
+
+      <!-- Valuation & Depreciation -->
+      <div class="faq-section">
+        <div class="faq-section-title">Valuation &amp; Depreciation</div>
+        <details>
+          <summary>How is my vehicle's resale value calculated?</summary>
+          <div class="faq-answer"><p>Either automatically, using a yearly depreciation percentage, or by manually entering your own current estimated value whenever you like.</p></div>
+        </details>
+        <details>
+          <summary>Does the app track when I actually sell a vehicle?</summary>
+          <div class="faq-answer"><p>No — resale value is always an estimate for your own reference, with no sold-date or sold-price tracking. Archive or delete the vehicle once it's actually gone.</p></div>
+        </details>
+        <details>
+          <summary>Why does Valuation need the Manufacture Date?</summary>
+          <div class="faq-answer"><p>Depreciation is calculated from the vehicle's age, so a Manufacture Date has to be set first.</p></div>
+        </details>
+      </div>
+
+      <!-- Compare -->
+      <div class="faq-section">
+        <div class="faq-section-title">Compare</div>
+        <details>
+          <summary>What is Compare?</summary>
+          <div class="faq-answer"><p>An opt-in screen where you can see how your vehicle's performance stacks up against other vehicles in your country, and rank against friends you add yourself.</p></div>
+        </details>
+        <details>
+          <summary>Do I need to sign in to use Compare?</summary>
+          <div class="faq-answer"><p>Yes — Compare needs a one-time Google Sign-In, separate from your local PIN. Nothing else in the app needs an account.</p></div>
+        </details>
+        <details>
+          <summary>What is a Ranked Vehicle?</summary>
+          <div class="faq-answer"><p>The one vehicle of yours that friends see when they look at your row. It's picked automatically if you only own one vehicle; otherwise, choose it on the Compare screen.</p></div>
+        </details>
+        <details>
+          <summary>Why do I need to tap Refresh to see new numbers?</summary>
+          <div class="faq-answer"><p>Compare only updates when you tap Refresh — it recalculates your own costs, syncs your percentile and your friends' latest numbers in one go. Nothing updates in the background on its own.</p></div>
+        </details>
+        <details>
+          <summary>What do the filter chips above the ranking list do?</summary>
+          <div class="faq-answer"><p>Tap any of them to cycle through its options: your country or worldwide, Personal/Commercial, fuel type, wheels, and which metric is shown. Your selections are remembered the next time you open Compare.</p></div>
+        </details>
+        <details>
+          <summary>How do I add friends?</summary>
+          <div class="faq-answer"><p>Invite shares your personal code with someone you know — they enter it to send you a request. Match pairs you with someone at random instead.</p></div>
+        </details>
+        <details>
+          <summary>What does long-pressing a friend's row do?</summary>
+          <div class="faq-answer"><p>Opens Challenge, End Challenge, or Unfriend. Challenge resets every month.</p></div>
+        </details>
+        <details>
+          <summary>What do the badge and stars mean?</summary>
+          <div class="faq-answer"><p>Your badge reflects how many friends you have and grows through a set of tiers. The stars on your own vehicle show roughly how you perform against others in your country and vehicle class.</p></div>
+        </details>
+      </div>
+
+      <!-- Reports & PDF Export -->
+      <div class="faq-section">
+        <div class="faq-section-title">Reports &amp; PDF Export</div>
+        <details>
+          <summary>What's in Reports?</summary>
+          <div class="faq-answer"><p>Date-range and comparison views of your costs, plus PDF export of either one.</p></div>
+        </details>
+        <details>
+          <summary>Do I need to pay to use Reports?</summary>
+          <div class="faq-answer"><p>No — watch one short ad when you open Reports, and everything inside (both views, unlimited PDF exports) is free to use until you leave the screen. Pro users skip the ad entirely.</p></div>
+        </details>
+        <details>
+          <summary>Do I need to watch an ad every time I export a PDF?</summary>
+          <div class="faq-answer"><p>No — just once per visit to Reports. Export as many PDFs as you like after that, until you leave the screen.</p></div>
+        </details>
+      </div>
+
+      <!-- Backup & Restore -->
+      <div class="faq-section">
+        <div class="faq-section-title">Backup &amp; Restore</div>
+        <details>
+          <summary>How do I back up my data locally?</summary>
+          <div class="faq-answer"><p>Go to Profile → Local Backup → Back Up. Choose where to save the file — your PIN protects it, since it's encrypted.</p></div>
+        </details>
+        <details>
+          <summary>What is Google Cloud Backup?</summary>
+          <div class="faq-answer"><p>An automatic backup to your own Google Drive, free for everyone — no Pro or ads required.</p></div>
+        </details>
+        <details>
+          <summary>How do I move to a new phone?</summary>
+          <div class="faq-answer"><p>Sign in with the same Google account on the new device and restore from Profile → Google Backup, or restore from a local backup file if you made one.</p></div>
+        </details>
+        <details>
+          <summary>Does restoring a backup also restore my PIN?</summary>
+          <div class="faq-answer"><p>Yes — restoring any backup, local or Google, brings back the PIN that was active when that backup was made, along with your data. You'll be asked to unlock again right after.</p></div>
+        </details>
+      </div>
+
+      <!-- Security -->
+      <div class="faq-section">
+        <div class="faq-section-title">Security</div>
+        <details>
+          <summary>How do I change my PIN?</summary>
+          <div class="faq-answer"><p>Go to Profile → Change PIN, enter your current PIN, then set and confirm a new one.</p></div>
+        </details>
+        <details>
+          <summary>What happens if I enter the wrong PIN too many times?</summary>
+          <div class="faq-answer"><p>The app locks temporarily with a countdown. Wait it out, then try again.</p></div>
+        </details>
+        <details>
+          <summary>What if I forget my PIN entirely?</summary>
+          <div class="faq-answer"><p>If you've taken a backup before, restoring it brings your old PIN back along with your data. If you haven't, your PIN can't be recovered — you'll need to delete your local data and start fresh.</p></div>
+        </details>
+        <details>
+          <summary>Why does the app still ask for my PIN sometimes, even with biometrics on?</summary>
+          <div class="faq-answer"><p>It's a periodic safety check, so you never fully lose track of your real PIN by relying only on biometrics.</p></div>
+        </details>
+      </div>
+
+      <!-- Pro & Membership -->
+      <div class="faq-section">
+        <div class="faq-section-title">Pro &amp; Membership</div>
+        <details>
+          <summary>What does Pro actually unlock?</summary>
+          <div class="faq-answer"><p>One thing: skipping the ad on Compare's Refresh and on opening Reports. Every other feature — unlimited vehicles, Google Cloud Backup, Reports and PDF exports — is free for everyone regardless of Pro.</p></div>
+        </details>
+        <details>
+          <summary>Is Pro a subscription?</summary>
+          <div class="faq-answer"><p>Yes, billed annually.</p></div>
+        </details>
+        <details>
+          <summary>Do I have to watch ads if I don't buy Pro?</summary>
+          <div class="faq-answer"><p>Only for Refresh and Reports, and even then it's just one short ad per use.</p></div>
+        </details>
+        <details>
+          <summary>How do I restore my Pro purchase on a new device?</summary>
+          <div class="faq-answer"><p>Go to Profile → Membership → Restore Purchase. It's verified against the Play Store/App Store account signed into that device.</p></div>
+        </details>
+      </div>
+
+      <!-- Account & Data -->
+      <div class="faq-section">
+        <div class="faq-section-title">Account &amp; Data</div>
+        <details>
+          <summary>Is an internet connection required to use the app?</summary>
+          <div class="faq-answer"><p>No — Garage, logging, Home, Reports (once unlocked), and local Backup/Restore all work fully offline. Google Backup, Compare, and ads need a connection.</p></div>
+        </details>
+        <details>
+          <summary>Is my data private?</summary>
+          <div class="faq-answer"><p>Your vehicle and expense records stay on your device and are never sent anywhere — except the comparison figures you explicitly opt into sharing on Compare, and even then, never your raw records.</p></div>
+        </details>
+        <details>
+          <summary>What happens if I delete my account?</summary>
+          <div class="faq-answer"><p>Go to Profile → Delete Account (PIN-protected). This permanently wipes every local record and resets the app to first launch. It doesn't touch your Google Drive backups, and you choose separately whether to also remove your Compare data.</p></div>
+        </details>
+      </div>
+
+      <!-- Contact strip -->
+      <div class="contact-strip">
+        <div class="contact-strip-text">
+          <h3>Still have a question?</h3>
+          <p>We're happy to help. Send us a message and we'll get back to you.</p>
+        </div>
+        <a class="contact-btn" href="mailto:hello@kyzenz.com">
+          <span class="material-symbols-outlined">mail</span>
+          hello@kyzenz.com
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="container">
+      <span class="footer-copy">© 2026 Kyzenz · All rights reserved · <a class="footer-link" href="mbd.html">MoneyBoss Drive</a></span>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    });
+  </script>
+
+</body>
+</html>

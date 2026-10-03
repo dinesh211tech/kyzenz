@@ -113,6 +113,7 @@
     .page-meta { font-size: 13px; color: var(--text-subtle); }
 
     /* ── Policy content ── */
+    #delete-data { scroll-margin-top: 80px; }
     .policy-wrap { padding: 0 0 80px; }
     .policy-block { margin-bottom: 36px; }
     .policy-block h3 {
@@ -181,7 +182,7 @@
     <div class="container">
       <p class="page-eyebrow">Legal</p>
       <h1>Privacy Policy</h1>
-      <p class="page-meta">MoneyBoss Drive by Kyzenz &mdash; Last updated: September 2026</p>
+      <p class="page-meta">MoneyBoss Drive by Kyzenz &mdash; Last updated: October 2026</p>
     </div>
   </div>
 
@@ -190,50 +191,57 @@
 
       <div class="policy-block">
         <h3>Overview</h3>
-        <p>MoneyBoss Drive is designed to keep your vehicle expense data on your device. All logs — fuel, service, insurance, repairs — are stored locally and are never seen, collected, or shared by Kyzenz in any identifiable form. No account or sign-up is required to use the app.</p>
-        <p>One feature, the Leaderboard, uses anonymised and aggregated cost data to let you compare running costs against similar vehicles. This is the only case where any data derived from your logs leaves your device, and it is covered in detail below under &ldquo;Benchmark &amp; Leaderboard Data&rdquo;.</p>
+        <p>All your expenses are stored locally on your device and are never seen, collected, or shared by Kyzenz. No account or sign-up is required to use the app.</p>
+        <p>A few optional features rely on outside services you choose to turn on: Google Drive Backup, Compare (which requires Google Sign-In to rank against friends and other drivers), non-personalized ads to unlock select features for free, and in-app purchases for MoneyBoss Drive PRO. Each is covered under &ldquo;Optional Features &amp; Third-Party Services&rdquo; below, along with exactly what each service can and can&rsquo;t see.</p>
       </div>
 
       <div class="policy-block">
         <h3>Permissions We Request</h3>
         <p>MoneyBoss Drive requests the following device permissions, each limited to a single purpose:</p>
         <ul>
-          <li><strong>Notifications</strong> &mdash; service and fuel reminders are scheduled locally on your device. No notification data is sent to Kyzenz servers, and notifications can be disabled anytime in the app settings.</li>
+          <li><strong>Notifications</strong> &mdash; your daily reminder (to log expenses and refresh your Compare rank) is scheduled locally on your device, and automatically rescheduled if your phone restarts. No notification data is sent to Kyzenz servers, and notifications can be disabled anytime in the app settings.</li>
           <li><strong>Biometric authentication</strong> &mdash; if you enable fingerprint or face login, authentication happens entirely on your device&rsquo;s secure hardware. Biometric data never leaves your device and is never accessible to MoneyBoss Drive or Kyzenz.</li>
         </ul>
       </div>
 
       <div class="policy-block">
         <h3>Data We Collect</h3>
-        <p>Your raw vehicle expense records are stored locally on your device in a private database. They are:</p>
+        <p>Your vehicle and expense records are stored locally on your device in a private database. They are:</p>
         <ul>
           <li>Never uploaded to Kyzenz servers in any identifiable form</li>
           <li>Never used for advertising or sold to third parties</li>
           <li>Only accessible to the MoneyBoss Drive app on your device</li>
         </ul>
-        <p>The app includes no analytics SDKs and no crash-reporting services.</p>
-      </div>
-
-      <div class="policy-block">
-        <h3>Benchmark &amp; Leaderboard Data</h3>
-        <p>The Leaderboard feature shows how your vehicle&rsquo;s running costs compare to similar vehicles driven by other users. To make this work, MoneyBoss Drive derives an <strong>anonymous aggregate</strong> from your local data and sends it to our server (Supabase). This aggregate contains:</p>
-        <ul>
-          <li>Vehicle attributes: make, model year, body type, wheels, transmission, fuel type, induction, engine size, power, torque, and wheel size</li>
-          <li>Aggregated cost figures (fuel cost per km, total running cost per km) &mdash; not individual expense records</li>
-        </ul>
-        <p>This aggregate <strong>does not</strong> contain your name, device ID, account details, or any individual expense entries. It cannot be traced back to you. Kyzenz uses this data solely to compute benchmark averages for the Leaderboard and for nothing else.</p>
-        <p>The free plan allows one Leaderboard refresh per day, unlocked by watching a rewarded ad. Pro subscribers get unlimited refreshes with no ads.</p>
+        <p>The app includes no analytics SDKs and no crash-reporting services. The only data that ever leaves your device is described below, and only if you choose to turn on Google Drive Backup or Compare.</p>
       </div>
 
       <div class="policy-block">
         <h3>Optional Features &amp; Third-Party Services</h3>
+        <p>The following features are entirely optional and require you to opt in. Turning one of them on is the only way any of your data ever leaves your device.</p>
+
+        <h4>Google Drive Backup</h4>
+        <p>You may choose to back up your data to Google Drive. This is entirely optional and user-initiated, and runs automatically once turned on.</p>
+        <ul>
+          <li>Backups are stored in your personal Google Drive app data folder, accessible only to MoneyBoss Drive &mdash; not your regular Drive files</li>
+          <li>Kyzenz cannot access your Google Drive or backup files</li>
+          <li>You can delete your backup at any time from Google Drive settings</li>
+        </ul>
+
+        <h4>Compare (requires Google Sign-In)</h4>
+        <p>Compare is an optional screen that lets you see how your vehicle&rsquo;s running costs and mileage stack up against other drivers, and rank against friends you add yourself. Turning it on requires signing in with a Google account, used only to create your Compare identity &mdash; Kyzenz never sees your Google password, and sign-in itself is handled entirely by Google.</p>
+        <p>Compare shares two different kinds of information, and they work differently:</p>
+        <ul>
+          <li><strong>Country/vehicle-class percentile</strong> &mdash; your vehicle&rsquo;s cost and mileage figures are compared against other MoneyBoss Drive users in your country with a similar vehicle (same wheel count, and fuel type for the mileage comparison). This is an anonymous aggregate comparison &mdash; no other user can see your individual figures through it, only your own relative standing.</li>
+          <li><strong>Friends you add</strong> &mdash; if someone you invite, or are matched with, accepts your connection, that specific friend can see your chosen display name, your vehicle&rsquo;s name, your country, your badge, and your actual cost/mileage/profit figures for the one vehicle you&rsquo;ve set as your Ranked Vehicle. This is <strong>not anonymous</strong> between friends &mdash; that visibility is the entire point of the feature. You choose who you connect with, and can Unfriend anyone at any time to stop sharing with them.</li>
+        </ul>
+        <p>Your raw fuel, maintenance, accessory, income, and trip records themselves are never sent anywhere &mdash; only the aggregated cost-per-km, mileage, and profit figures described above.</p>
 
         <h4>Advertising (Google AdMob)</h4>
-        <p>Free users can refresh the Leaderboard once per day by watching a short rewarded video ad, powered by Google AdMob. These ads are <strong>non-personalized</strong> &mdash; Google does not use your browsing history, advertising ID, or a behavioural profile to choose which ad you see, and the ads never see your vehicle or expense data.</p>
-        <p>You can avoid ads entirely by upgrading to Pro. Learn more at <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google&rsquo;s Partner Sites policy</a>.</p>
+        <p>Free users can watch a short rewarded video ad, powered by Google AdMob, to run a Compare Refresh or open Reports. These ads are <strong>non-personalized</strong> &mdash; Google does not use your browsing history, advertising ID, or a behavioural profile to choose which ad you see, and the ads never see your vehicle or expense data.</p>
+        <p>You can avoid ads entirely by upgrading to PRO. Learn more at <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google&rsquo;s Partner Sites policy</a>.</p>
 
         <h4>In-App Purchases</h4>
-        <p>MoneyBoss Drive Pro is an optional subscription available through Google Play and the App Store. Purchase transactions are handled by Google Play, the App Store, and RevenueCat. We receive only confirmation that a valid purchase has been made &mdash; no payment details or personal financial information is shared with Kyzenz.</p>
+        <p>MoneyBoss Drive PRO is an optional annual subscription available through Google Play and the App Store. Its only benefit is skipping the ad on Compare Refresh and Reports &mdash; every other feature, including unlimited vehicles and Google Drive Backup, is free for everyone regardless of PRO status. Purchase transactions are handled by Google Play, the App Store, and RevenueCat. We receive only confirmation that a valid purchase has been made &mdash; no payment details or personal financial information is shared with Kyzenz.</p>
 
         <h4>At a Glance</h4>
         <div class="table-wrap">
@@ -242,9 +250,11 @@
               <tr><th>Party</th><th>What they receive</th><th>Kyzenz access</th></tr>
             </thead>
             <tbody>
-              <tr><td>Kyzenz (Supabase)</td><td>Anonymous vehicle cost aggregates for the Leaderboard</td><td>Aggregate figures only &mdash; no personal data</td></tr>
-              <tr><td>Google AdMob</td><td>Non-personalized ad request signals (only if you watch an ad)</td><td>None &mdash; never sees expense data</td></tr>
-              <tr><td>RevenueCat / Google Play / App Store</td><td>Purchase status only (only if you buy Pro)</td><td>None &mdash; no payment details</td></tr>
+              <tr><td>Kyzenz (Supabase)</td><td>Your Compare display name, vehicle name, country, badge, and cost/mileage/profit figures &mdash; only if you opt into Compare</td><td>Used only to run Compare&rsquo;s ranking and show your figures to friends you&rsquo;ve connected with; never sold or used for advertising</td></tr>
+              <tr><td>Google (Sign-In)</td><td>Basic account info to create your Compare identity &mdash; only if you opt into Compare</td><td>None beyond standard Google authentication</td></tr>
+              <tr><td>Google Drive</td><td>Your backup file &mdash; only if you turn on Google Backup</td><td>None &mdash; stored in your own Drive, inaccessible to Kyzenz</td></tr>
+              <tr><td>Google AdMob</td><td>Non-personalized ad request signals &mdash; only if you watch an ad</td><td>None &mdash; never sees vehicle or expense data</td></tr>
+              <tr><td>RevenueCat / Google Play / App Store</td><td>Purchase status only &mdash; only if you buy PRO</td><td>None &mdash; no payment details</td></tr>
             </tbody>
           </table>
         </div>
@@ -258,7 +268,9 @@
 
       <div class="policy-block">
         <h3>Data Deletion</h3>
-        <p>You can delete all your local data at any time from Profile &rarr; Delete Account, which permanently removes your profile and all records from the device. Anonymous benchmark aggregates already contributed to the Leaderboard cannot be individually identified or removed, as they are not linked to you in any way.</p>
+        <p id="delete-data">You can delete your local data at any time from Profile &rarr; Delete Account, which permanently removes your profile and all records from the device.</p>
+        <p>If you&rsquo;ve opted into Compare, Delete Account gives you the option to also remove your Compare data &mdash; your display name, vehicle figures, and friend connections &mdash; from our servers at the same time. If you skip that option, your Compare data stays associated with your Google account until you sign in again and remove it from Profile, or contact us below.</p>
+        <p>If you&rsquo;ve enabled Google Drive Backup, your backup file remains in your Google Drive until you delete it separately from there.</p>
       </div>
 
       <div class="policy-block">
