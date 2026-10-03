@@ -123,6 +123,40 @@
       max-width: 420px;
     }
 
+    /* ── Search ── */
+    .search-box { position: relative; margin-bottom: 32px; }
+    .search-box input {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 12px 16px 12px 44px;
+      font-family: var(--font);
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-box input::placeholder { color: var(--text-subtle); }
+    .search-box input:focus { border-color: var(--teal); }
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: var(--text-subtle);
+      pointer-events: none;
+    }
+    .no-results {
+      display: none;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      padding: 24px 0 8px;
+    }
+    .no-results.visible { display: block; }
+
     /* ── FAQ ── */
     .faq-wrap { padding: 0 0 80px; }
 
@@ -265,6 +299,12 @@
   <!-- ── FAQ ── -->
   <div class="faq-wrap">
     <div class="container">
+
+      <div class="search-box">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input type="text" id="faq-search" placeholder="Search help topics" autocomplete="off" />
+      </div>
+      <p class="no-results" id="faq-no-results">No results found</p>
 
       <!-- Getting Started -->
       <div class="faq-section">
@@ -621,6 +661,33 @@
     const nav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // Search: filters individual Q&A entries (not whole sections) by their
+    // combined question+answer text, auto-expanding matches and hiding a
+    // section entirely once none of its entries match. Clearing the box
+    // restores every entry to its default collapsed state.
+    const searchInput = document.getElementById('faq-search');
+    const noResults = document.getElementById('faq-no-results');
+    const sections = document.querySelectorAll('.faq-section');
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.trim().toLowerCase();
+      let anyVisible = false;
+
+      sections.forEach((section) => {
+        let sectionHasMatch = false;
+        section.querySelectorAll('details').forEach((item) => {
+          const matches = query === '' || item.textContent.toLowerCase().includes(query);
+          item.style.display = matches ? '' : 'none';
+          item.open = matches && query !== '';
+          if (matches) sectionHasMatch = true;
+        });
+        section.style.display = sectionHasMatch ? '' : 'none';
+        if (sectionHasMatch) anyVisible = true;
+      });
+
+      noResults.classList.toggle('visible', !anyVisible);
     });
   </script>
 
