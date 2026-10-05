@@ -1,0 +1,101 @@
+=== SHARED SHORT TAGLINE ===
+(App Store: Promotional Text, ≤170 chars, editable without a new build.
+Play Store: Short description, ≤80 chars hard limit. One string fits both.
+Matches moneybosshome's own revised wording — Google Backup and Compare are
+real optional network features, not claimed away. See CLAUDE.md's Key Rules.)
+
+Private, Secure, Offline Vehicle Cost Tracker. No Account or Signup Required.
+
+=== APP STORE ONLY ===
+
+Keywords (100 characters, comma-separated — Play has no equivalent field):
+Vehicle,Car,Fuel,Mileage,Maintenance,Taxi,Garage,Cost Tracker,Expense Tracker,Driving
+
+Terms of Use (EULA) — append at the very end of the Description field on App Store Connect only (Apple Guideline 3.1.2 requirement; Play has no equivalent, not part of the shared description below):
+Terms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+
+=== PLAY STORE ONLY ===
+
+App name (30 characters):
+MoneyBoss Drive Cost Tracker
+
+=== SHARED DESCRIPTION (both stores) ===
+
+MoneyBoss Drive is a Private, Secure and Offline Vehicle Cost Tracker
+Take control of what your vehicle really costs you with MoneyBoss Drive – a fast, private and easy-to-use Vehicle Cost Tracker built for everyday drivers.
+
+MoneyBoss Drive works completely offline. No account to create, no cloud storage required for everyday use. Your vehicle data stays on your device, giving you complete control over your privacy.
+
+Whether you're tracking fuel, maintenance, insurance or daily trips, MoneyBoss Drive helps you understand exactly what your vehicle costs with a clear dashboard and real Cost/km figures.
+
+PRIVATE & SECURE BY DESIGN
+Your vehicle data belongs only to you:
+• MoneyBoss Drive never requires an account to use the app, except optional Google Backup and Compare
+• There are no unnecessary permissions and no cloud dependency for everyday use
+• Compare's Refresh and Reports are free to use by watching a short non-personalized Ad. Pro removes the ads entirely.
+Secure your data with:
+• PIN protection
+• Fingerprint or Face Unlock
+• Automatic app lock after repeated incorrect PIN attempts
+• Your vehicle information stays on your device unless you choose to back up your data or opt into Compare
+
+MULTIPLE LANGUAGES & CURRENCIES
+• Supports English, Español, Português, Français and हिन्दी.
+• Over 150 currencies supported.
+
+TRACK EVERY VEHICLE COST
+• Log Fuel, Maintenance, Accessories and Income in seconds
+• Add any number of vehicles and swipe the vehicle images to switch between vehicles
+• Track Service, Papers (insurance, tax, permit) and Charges (tolls, parking, fines) separately
+• Record trips with true brim-to-brim mileage
+• Search and filter your entire history instantly
+• Edit any entry anytime from the recent list
+
+UNDERSTAND YOUR VEHICLE'S REAL COST
+• Clear dashboard with Total Cost/km and Running Cost/km
+• See Net Profit/km once you log income — know if you're really making money
+• Automatic resale valuation from depreciation or your own estimate
+• Upcoming maintenance reminders by date or odometer, right on the dashboard
+• Every figure recalculates fresh from your logs — no stale totals
+
+BACKUP & RESTORE
+• Never worry about losing your data
+• Manual encrypted local backup & restore
+• Automatic Google backup & restore protected by your Google account, 4 weekly snapshots kept
+
+UNLOCK MORE
+Watch a quick rewarded Ad to refresh your Compare rank or unlock Reports & PDF export.
+Or upgrade to Pro to skip the ads entirely — every other feature stays free either way.
+
+COMPARE WITH FRIENDS
+See how your vehicle really stacks up.
+• Compare your cost, mileage and profit against other drivers in your country
+• Invite friends directly, or get matched with someone at random
+• Rank by Total Cost/km, Running Cost/km, Mileage or Net Profit
+• Only your comparison figures are ever shared — never your raw records
+
+REPORTS & PDF EXPORT
+Analyse your costs with powerful filters.
+• Filter by date range, or compare two vehicles side by side
+• Switch freely between both views once unlocked
+• Export detailed PDF reports
+
+WHY CHOOSE MONEYBOSS DRIVE?
+✓ Private & Secure
+✓ Offline First
+✓ No Account Required
+✓ Unlimited Vehicles
+✓ Real Cost/km & Net Profit
+✓ Compare with Friends
+✓ Automatic Google Backup
+✓ Powerful Reports
+✓ Fast & Simple
+✓ Multiple Languages
+Take control of what your vehicle really costs you with MoneyBoss Drive — the private vehicle cost tracker built to help you track every expense, see your real profit, compare with friends, and keep your data completely under your control.
+
+=== SHARED METADATA ===
+
+https://www.kyzenz.com
+https://kyzenz.com/moneybossdrive/mbd.html#app
+1.0.0
+© 2026 Kyzenz
