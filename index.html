@@ -36,10 +36,14 @@
 
     /* ── Variables ── */
     :root {
-      --dark:       #0a0a0a;
-      --accent:     #0d9488;
-      --font:       'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --max-width:  1100px;
+      --dark:        #0a0a0a;
+      --surface:     #111111;
+      --border:      rgba(255,255,255,0.08);
+      --text-muted:  #94a3b8;
+      --accent:      #0d9488;
+      --teal:        #2dd4bf;
+      --font:        'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-width:   1100px;
     }
 
     /* ── Base ── */
@@ -113,6 +117,37 @@
     }
     .nav-contact:hover { color: #ffffff; }
 
+    /* ── Entrance + shimmer animation ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes card-shimmer {
+      0%, 100% { border-color: rgba(45,212,191,0.18); }
+      50%       { border-color: rgba(45,212,191,0.5); }
+    }
+    @keyframes card-shine {
+      0%   { transform: translateX(-150%); }
+      45%  { transform: translateX(220%); }
+      100% { transform: translateX(220%); }
+    }
+    .hero-eyebrow, .hero h1, .hero p, .hero-kaizen {
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero-eyebrow { animation-delay: 0s; }
+    .hero h1      { animation-delay: 0.08s; }
+    .hero p       { animation-delay: 0.16s; }
+    .hero-kaizen  { animation-delay: 0.44s; }
+    /* Cards fade up on load, then settle into the same idle shimmer the old Explore button had */
+    .app-card:nth-child(1) { animation: fadeUp 0.6s ease 0.26s both, card-shimmer 3s ease-in-out 0.86s infinite; }
+    .app-card:nth-child(2) { animation: fadeUp 0.6s ease 0.34s both, card-shimmer 3s ease-in-out 0.94s infinite; }
+    .app-card:hover { animation-play-state: paused; }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-eyebrow, .hero h1, .hero p, .hero-kaizen, .app-card, .app-card::before {
+        animation: none;
+      }
+    }
+
     /* ── Hero ── */
     .hero {
       flex: 1;
@@ -150,32 +185,86 @@
       margin: 0 auto;
       line-height: 1.75;
     }
-    .hero .hero-kaizen {
+    .hero-kaizen {
       font-size: 13px;
       font-weight: 400;
       letter-spacing: 0.3px;
       color: #64748b;
+      text-align: center;
       margin-top: 64px;
     }
-    @keyframes btn-shimmer {
-      0%, 100% { border-color: rgba(45,212,191,0.2); }
-      50%       { border-color: rgba(45,212,191,0.6); }
+    /* ── Apps ── */
+    .apps {
+      padding: 64px 0 96px;
     }
-    .btn-explore {
-      display: inline-block;
-      margin-top: 36px;
-      padding: 8px 20px;
+    .apps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .app-card {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 24px;
+      background: linear-gradient(155deg, rgba(13,148,136,0.14), rgba(13,148,136,0.03));
+      border: 1px solid rgba(45,212,191,0.18);
+      border-radius: 16px;
+      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+    }
+    .app-card:hover {
+      border-color: rgba(45,212,191,0.45);
+      background: linear-gradient(155deg, rgba(13,148,136,0.22), rgba(13,148,136,0.05));
+      transform: translateY(-2px);
+    }
+    .app-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(100deg, transparent, rgba(45,212,191,0.22), transparent);
+      transform: translateX(-150%);
+      pointer-events: none;
+    }
+    .app-card:nth-child(1)::before { animation: card-shine 8s ease-in-out 1.6s infinite; }
+    .app-card:nth-child(2)::before { animation: card-shine 8s ease-in-out 1.9s infinite; }
+    .app-card:hover::before { animation-play-state: paused; }
+    .app-card img {
+      width: 52px;
+      height: 52px;
+      min-width: 52px;
+      border-radius: 13px;
+      display: block;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5), 0 0 24px rgba(13,148,136,0.25);
+    }
+    .app-card-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+    .app-card-tagline {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .app-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
       font-size: 13px;
       font-weight: 600;
-      letter-spacing: 0.3px;
-      color: #2dd4bf;
-      background: rgba(13,148,136,0.12);
-      border: 1px solid rgba(45,212,191,0.2);
-      border-radius: 10px;
-      animation: btn-shimmer 3s ease-in-out infinite;
-      transition: background 0.2s;
+      color: var(--teal);
     }
-    .btn-explore:hover { background: rgba(13,148,136,0.22); animation: none; border-color: rgba(45,212,191,0.5); }
+    .app-card:hover .app-card-cta { gap: 7px; }
+    .app-card-cta .arrow { transition: transform 0.2s; }
 
     /* ── Footer ── */
     footer {
@@ -195,6 +284,7 @@
     @media (max-width: 600px) {
       .hero   { padding: 80px 0 72px; }
       .hero p { font-size: 16px; }
+      .apps-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -215,8 +305,34 @@
     <div class="container">
       <span class="hero-eyebrow">Welcome to Kyzenz</span>
       <h1>Simple apps for<br>everyday life</h1>
-      <p>We build private, offline-first apps that put you in control of your data.</p>
-      <a class="btn-explore" href="/moneybosshome/mbh.html">Explore MoneyBoss Home</a>
+      <p>We build secure, private-first, offline-first apps that put you in control of your data.</p>
+    </div>
+  </section>
+
+  <!-- Apps -->
+  <section class="apps">
+    <div class="container">
+      <div class="apps-grid">
+
+        <a class="app-card" href="/moneybosshome/mbh.html">
+          <img src="moneybosshome/Images/mb_icon.png" alt="MoneyBoss Home icon" />
+          <div>
+            <div class="app-card-name">MoneyBoss Home</div>
+            <p class="app-card-tagline">Track expenses. Control spending. No strings attached.</p>
+            <span class="app-card-cta">Explore MoneyBoss Home <span class="arrow">&rarr;</span></span>
+          </div>
+        </a>
+
+        <a class="app-card" href="/moneybossdrive/mbd.html">
+          <img src="moneybossdrive/Images/mbd_icon.png" alt="MoneyBoss Drive icon" />
+          <div>
+            <div class="app-card-name">MoneyBoss Drive</div>
+            <p class="app-card-tagline">Every vehicle cost in one place. Compare with friends.</p>
+            <span class="app-card-cta">Explore MoneyBoss Drive <span class="arrow">&rarr;</span></span>
+          </div>
+        </a>
+
+      </div>
       <p class="hero-kaizen">Kyzenz (Kaizen) &mdash; &ldquo;continuous improvement&rdquo;<br>or &ldquo;change for the better&rdquo;</p>
     </div>
   </section>
