@@ -124,6 +124,14 @@ A step-by-step reference of all optimisations and improvements made to the site.
 - Keeps the existing dark-theme HTML structure (details/summary accordions, faq-section divs)
 - Update this file whenever in-app help content changes
 
+## 17. MoneyBoss Drive (MBD) — Port Fixes
+- Fixed broken screenshot images: `mbd.html` hardcoded `.svg` extensions on 11 `<img>` elements (hero, every feature screenshot, sticky panel) but only `.png` files exist in `moneybossdrive/Images/`. Crawlers and slow connections saw a broken-image flash before the page's own JS corrected the `src`. Changed all initial `src` values to `.png` and removed the now-pointless `SVG_ONLY`/`extFor()` JS logic, matching `mbh.html`'s simpler pattern.
+- Added the three `moneybossdrive/` pages (`mbd.html`, `help.html`, `privacy.html`) to `sitemap.xml` — they were missing entirely, so Search Console had no way to discover them via the sitemap. Priorities mirror MBH's (0.9 / 0.7 / 0.5).
+- Wired `moneybossdrive/Images/feature.png` (Play Store feature graphic, 1024×500) in as `mbd.html`'s `og:image`, replacing the small app icon.
+- `moneybossdrive/privacy.html` and `help.html` og:image switched from the generic `kz-icon.png` to the app-specific `Images/mbd_icon.png`, matching MBH's pages (which use `mbh_icon.png` — no change needed there).
+- Removed the unused `.compare-footnote` CSS rule from `mbd.html` entirely (a footnote was briefly added explaining the "Ad" column, then removed by choice).
+- Fixed `.feature-badge.pro` color values in `mbd.html` to match `mbh.html` exactly (background `rgba(13,148,136,0.12)`, border `rgba(45,212,191,0.2)`) — had drifted slightly during the port.
+
 ## Future Improvements
 - Consider WebP format for screen images (30-50% smaller than PNG)
 - Add lazy loading (`loading="lazy"`) to feature screen images for faster initial load
